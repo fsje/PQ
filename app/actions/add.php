@@ -15,6 +15,7 @@ require_once '../autoload.php';
         'model'         => $_POST['modelP2P'],
         'image'         => $_POST['image'],
         'ean'           => $_POST['ean'],
+        'type'          => $_POST['type'],
     );
 
 // Initalize product controller

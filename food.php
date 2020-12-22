@@ -41,10 +41,10 @@
                   
                     if(isset($_SESSION['userid']) && $_SESSION['userid'] == $accountId){
                         echo '<div class="productAdmin productEdit">';
-                            echo '<a href="/admin/admEdit.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
+                            echo '<a href="/admEdit.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
                         echo '</div>';
                         echo '<div class="productAdmin productDelete">';
-                            echo '<a href="/admin/admDelete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
+                            echo '<a href="/admDelete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
                         echo '</div>';
                     }
                     echo (isset($_GET['id'])) ? '<a href="../packaging/' . $v["parent_id"] . '">' : '<a href="' . (!empty($accountName) ? '/' . $accountName . '' : '') .  '/food/' . $v["id"] . '">';

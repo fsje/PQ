@@ -47,6 +47,13 @@ if(!isset($_SESSION['userid']))
                         <label for="inputsm">Produktnavn</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text">
                     </div>
+                    <div class="form-group">
+                        <label for="inputsm">Produkttype</label>
+                        <select name="type">
+                            <option value="packaging" <?php echo ($product['type'] == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
+                            <option value="food" <?php echo ($product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
+                        </select>
+                    </div>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
                     <div class="form-group">

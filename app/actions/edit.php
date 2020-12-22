@@ -19,6 +19,7 @@ if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
         'model'         => $_POST['modelP2P'],
         'image'         => $_POST['image'],
         'ean'           => $_POST['ean'],
+        'type'          => $_POST['type'],
     );
 
     // Check product details
