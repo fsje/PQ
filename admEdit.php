@@ -30,7 +30,7 @@ if(!isset($_SESSION['userid']))
             </h2>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
-                <form action="app/actions/edit.php" method="post">
+                <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post">
                     <div class="form-group">
                         <label for="inputdefault">Varenummer (Plant2Plast)</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
