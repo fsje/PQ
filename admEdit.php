@@ -37,7 +37,7 @@ if(!isset($_SESSION['userid']))
                     </div>
                     <div class="form-group">
                         <label for="inputlg">Varenummer (Kunde)</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">EAN Nummer</label>
@@ -45,7 +45,7 @@ if(!isset($_SESSION['userid']))
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Produktnavn</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['name'] : ''); ?>" name="productName" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text">
                     </div>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
@@ -55,11 +55,11 @@ if(!isset($_SESSION['userid']))
                     </div>
                     <div class="form-group">
                         <label for="inputlg">Kolistørrelse</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Materiale</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['material'] : ''); ?>" name="material" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Billede</label>
@@ -70,7 +70,7 @@ if(!isset($_SESSION['userid']))
     <div id="contentArea" class="row">
         <div class="col-12 col-lg-12 col-sm-12">
             <textarea class="productTextarea" name="description" placeholder="Beskrivelse">
-                <?php echo (isset($_GET['product']) ? $product['description'] : ''); ?>
+                <?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?>
             </textarea>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
             <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
