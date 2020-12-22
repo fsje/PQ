@@ -41,7 +41,7 @@ if(!isset($_SESSION['userid']))
                     <li><a href="<?php echo '/' . $company . '/packaging'; ?>">Oversigt: Emballage</a></li>
                     <li><a href="<?php echo '/' . $company . '/food'; ?>">Oversigt: Mad</a></li>
                     <li class="spacing"></li>
-                    <li><a href="/admPack.php">Tilføj ny</a></li>
+                    <li><a href="/admEdit.php">Tilføj ny</a></li>
                     <li class="logOutBtn"><a href="/app/logout.php">Log ud</a></li>
                 </ul>
                 
