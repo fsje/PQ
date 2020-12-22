@@ -8,32 +8,44 @@ if(!isset($_SESSION['userid']))
     $userController = new UserController();
     $user = $userController->getUserByAccountNumber($_SESSION['userid']);
 
-    $productController = new ProductController();
-    $product = $productController->getProductById($_GET['product']);
-    $productDetails = $productController->getProductDetails($product['id']);
+    if(isset($_GET['product'])){
+        $productController = new ProductController();
+        $product = $productController->getProductById($_GET['product']);
+        $productDetails = $productController->getProductDetails($product['id']);
+    }
 ?>
 
 <!-- CONTENT -->
 <div class="container">
     <div class="row" id="contentArea">
-        <div class="col-12"><h2>Du er ved at redigere <?php echo $product['model'] . ' (' . $product['id'] . ')'; ?></h2></div>
+        <div class="col-12">
+            <h2>
+                <?php
+                    if(isset($_GET['product'])){
+                        echo 'Du er ved at redigere ' . $product['model'] . ' (' . $product['id'] . ')';
+                    }else{
+                        echo 'Du er ved at oprette en vare';
+                    }
+                ?>
+            </h2>
+        </div>
         <div class="col-6 col-sm-12 col-md-6">
                 <form action="app/actions/edit.php" method="post">
                     <div class="form-group">
                         <label for="inputdefault">Varenummer (Plant2Plast)</label>
-                        <input class="form-control" value="<?php echo $product['model']; ?>" name="modelP2P" id="inputdefault" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputlg">Varenummer (Kunde)</label>
-                        <input class="form-control" value="<?php echo $productDetails['reitan']; ?>" name="modelCustomer" id="inputlg" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">EAN Nummer</label>
-                        <input class="form-control" value="<?php echo $product['ean']; ?>" name="ean" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['ean'] : ''); ?>" name="ean" id="inputsm" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Produktnavn</label>
-                        <input class="form-control" value="<?php echo $productDetails['name']; ?>" name="productName" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['name'] : ''); ?>" name="productName" id="inputsm" type="text">
                     </div>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
@@ -43,22 +55,22 @@ if(!isset($_SESSION['userid']))
                     </div>
                     <div class="form-group">
                         <label for="inputlg">Kolistørrelse</label>
-                        <input class="form-control" value="<?php echo $productDetails['carton']; ?>" name="carton" id="inputlg" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Materiale</label>
-                        <input class="form-control" value="<?php echo $productDetails['material']; ?>" name="material" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['material'] : ''); ?>" name="material" id="inputsm" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Billede</label>
-                        <input class="form-control" value="<?php echo $product['image']; ?>" name="image" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
                     </div>
         </div>
     </div>
     <div id="contentArea" class="row">
         <div class="col-12 col-lg-12 col-sm-12">
             <textarea class="productTextarea" name="description" placeholder="Beskrivelse">
-                <?php echo $productDetails['description']; ?>
+                <?php echo (isset($_GET['product']) ? $product['description'] : ''); ?>
             </textarea>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
             <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
