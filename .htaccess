@@ -1,0 +1,37 @@
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+Options +FollowSymLinks
+RewriteEngine On
+ 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+# GENERIC
+RewriteRule ^home*$ ./index.php
+RewriteRule ^info*$ ./info.php
+
+
+
+RewriteRule ^home*$ ./index.php
+
+RewriteRule ^Q8*$ ./index.php?account=Q8
+RewriteRule ^q8*$ ./index.php?account=Q8
+
+# Overviews
+RewriteRule ^food*$ ./food.php
+RewriteRule ^(.*)/food*$ ./food.php?account=$1
+
+RewriteRule ^packaging*$ ./packaging.php
+RewriteRule ^(.*)/packaging*$ ./packaging.php?account=$1
+
+
+# DETAILS
+RewriteRule ^food/(\d+)*$ ./food.php?id=$1
+RewriteRule ^(.*)/food/(\d+)*$ ./food.php?account=$1&id=$2
+
+RewriteRule ^packaging/(\d+)*$ ./details.php?id=$1
+RewriteRule ^(.*)/packaging/(\d+)*$ ./details.php?account=$1&id=$2

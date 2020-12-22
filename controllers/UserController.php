@@ -1,0 +1,52 @@
+<?php
+
+class UserController extends Controller
+{
+
+    protected $accountNumber;
+    protected $password;
+
+
+    /**
+     * HomeController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->model = new UserModel();
+    }
+
+
+    /**
+     * @param array $params
+     */
+
+    public function getAllUsers()
+    {
+            $result = $this->model->getUsers();
+            foreach($result as $key => $value){
+                $result[$key] = $value;
+            }
+            return $result;
+    }   
+
+    public function authUser($accountNumber, $password)
+    {
+        $result = $this->model->authUser($accountNumber, $password);
+        #print_r($result);
+        
+    }
+
+    public function getUserByAccountNumber($accountNumber)
+    {
+        if(!empty($accountNumber))
+        {
+            $result = $this->model->getUserByAccountNumber($accountNumber);
+            foreach($result as $key => $value){
+                $result[$key] = $value;
+            }
+            return $result;
+        }
+    }
+
+}
