@@ -106,4 +106,9 @@ class ProductController extends Controller
        $this->model->updateProductByID($product_id, $data, $table, $identifier);
     }
 
+    public function addProductWithArray($data, $table)
+    {
+        return $this->model->addProductWithArray($data, $table);
+    }
+
 }
