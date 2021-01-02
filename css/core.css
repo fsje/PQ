@@ -1518,3 +1518,19 @@ h3.category-text:hover {
 #adminArea > ul > li.logOutBtn {
     background: orange;
  }
+
+ .addProduct {
+     position: fixed;
+     bottom: 20px;
+     right: 75px;
+     background: rgb(228, 207, 22);
+     width: 120px;
+     height: 120px;
+     padding-top: 25px;
+     border-radius:120px;
+ }
+
+ .productPlus {
+     font-size: 72px;
+     color:#fff;
+ }

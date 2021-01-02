@@ -60,6 +60,9 @@
 
     </div>
 </div>
+<div class="addProduct">
+    <a href="/admEdit.php"><i class="productPlus fas fa-plus"></i></a>
+</div>
     <?php
         require_once 'views/includes/footer.php';
     ?>
