@@ -17,8 +17,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     {
         $user = $user->authUser($accountNumber, $password);
 
-        if($_SESSION['userid']){
+        if(isset($_SESSION['userid'])){
             header('location:../admin.php');
+            exit();
+        }else{
+            header('location:../login.php');
+            exit();
         }
 
         print_r($_SESSION);
