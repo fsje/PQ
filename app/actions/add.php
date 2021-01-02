@@ -16,6 +16,7 @@ require_once '../autoload.php';
         'image'         => $_POST['image'],
         'ean'           => $_POST['ean'],
         'type'          => $_POST['type'],
+        'accountNumber' => $_SESSION['userid'],
     );
 
 // Initalize product controller
