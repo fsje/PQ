@@ -35,13 +35,13 @@ if(!isset($_SESSION['userid']))
             <div class="form-group">
                             <label for="inputsm">Produkttype</label>
                             <select name="relativeFood">
-                            <option value="" selected>Vælg fødevarer</option>
-                            <?php
-                                foreach($getFoods as $k => $v)
-                                {
-                                    echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';
-                                }
-                                ?>
+                                <option value="" selected>Vælg fødevarer</option>
+                                <?php
+                                    foreach($getFoods as $k => $v)
+                                    {
+                                        echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';
+                                    }
+                                    ?>
                             </select>
                         </div>
             </div>
