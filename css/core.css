@@ -1352,7 +1352,7 @@ img#dispImg {
     margin-left: -96px;
 }
 
-.btn-group-container {
+.button-group-container {
     /* width: 500px; */
     /* margin-left: -250px; */
     /* top: 1px; */
@@ -1360,7 +1360,7 @@ img#dispImg {
     height: 32px;
 }
 
-.btn-group{
+.button-group{
 	
 	position: absolute;
     left: 50%;
@@ -1373,7 +1373,7 @@ img#dispImg {
     background-color: #f3f3f34d;
     border-bottom-right-radius: 4px;
 }
-.btn-group a{
+.button-group a{
 	
     position: relative;
     top: -18px;
@@ -1382,16 +1382,16 @@ img#dispImg {
     text-transform: uppercase;
 }
 
-.btn-group p{
+.button-group p{
 	
     position: relative;
     top: -2px;
 
 }
-.btn-group:hover{
+.button-group:hover{
 	background-color: #f3f3f36e
 }
-.btn-group button {
+.button-group button {
 
   border: 1px solid white; /* Green border */
   color: #fff; /* White text */
@@ -1400,24 +1400,24 @@ img#dispImg {
   height: 35px;
 }
 
-.btn-group p {
+.button-group p {
 	
 	color: #fff
 }
 
 /* Clear floats (clearfix hack) */
-.btn-group:after {
+.button-group:after {
   content: "";
   clear: both;
   display: table;
 }
 
-.btn-group button:not(:last-child) {
+.button-group button:not(:last-child) {
   border-right: none; /* Prevent double borders */
 }
 
 /* Add a background color on hover */
-.btn-group button:hover {
+.button-group button:hover {
   background-color: #969696;
 
 /*svg:not(:root).svg-inline--fa {

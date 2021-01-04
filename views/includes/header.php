@@ -31,7 +31,7 @@
         <meta charset="utf-8">
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <!-- Core CSS -->
         <link rel="stylesheet" href="/css/core.css?v=<?= filemtime('css/core.css') ?>" type="text/css">
@@ -73,8 +73,8 @@
                     <a onclick="goBack()"><i data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" class="goBack fa fa-2x fa-arrow-left"></i></a>
                 </div>
 				<div class="col-4 col-sm-4 col-ms-4" align="center">
-					<div class="btn-group-container">
-						<div class="btn-group">
+					<div class="button-group-container">
+						<div class="button-group">
 
 						  <a href="http://www.premiumquality.dk/download/Premium_Quality_full_catalog.pdf"> <img class="download-icon" src="/img/icon_download.svg"/> <p>produktliste</p></a>
 						  <!-- <button>Katalog</button> -->
