@@ -1552,4 +1552,25 @@ h3.category-text:hover {
  }
 
 select[name='relativeFood[]']:nth-child(1) {margin-top: 20px;}
-input[name='image[]']:nth-child(1){margin-top:20px;}
+input[name='images[]']:nth-child(1){margin-top:20px;}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.7;
+    background-color: rgb(27, 26, 26);
+    z-index: 99;
+    text-align: center;
+
+  }
+  
+  #loading-image {
+    position: absolute;
+    width:100px;
+    height:100px;
+    margin-top:200px;
+  }

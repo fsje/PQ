@@ -8,6 +8,11 @@ if(!isset($_SESSION['userid']))
 
 require_once '../autoload.php';
 
+echo '<pre>';
+print_r($_POST);
+
+/*
+
     // Add "relation" product
     $productId          =   $_POST['productId'];
 
@@ -33,4 +38,4 @@ $relationData = array(
 
 $relatedProduct          = $productController->addProductWithArray($relationData, 'pq_products_related');
 echo 'A relation was added to the database, with the id of ' . $relatedProduct; 
-echo '<br />';
+echo '<br />';*/

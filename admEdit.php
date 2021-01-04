@@ -85,7 +85,7 @@ if(!isset($_SESSION['userid']))
         <div align="center" class="col-12 col-lg-12 col-sm-12">
             <input class="btn btn-warning" style="font-weight:bold;" type="submit" value="Gem & Videre">
             <br />
-            <a href="#">Fortryd</a>
+            <a href=/admin.php#">Fortryd</a>
         </div>
         </form>
     </div>
