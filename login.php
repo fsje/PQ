@@ -19,12 +19,12 @@ if(isset($_SESSION['userid']))
                 }
            ?>
             <form action="app/login.php" method="post">
-                <div class="form-group">
+                <div class="form-group login-group">
                     <label for="accountNumber">Kontonummer</label>
                     <input name="accountNumber" type="text" class="form-control" id="accountNumber" aria-describedby="emailHelp" placeholder="Kontonummer">
                     <small id="emailHelp" class="form-text text-muted">Du kan få at kontonummer hos <a href="https://plant2plast.com"><u>Plant2Plast</u></a></small>
                 </div>
-                <div class="form-group">
+                <div class="form-group login-group">
                     <label for="password">Adgangskode</label>
                     <input name="password" type="password" class="form-control" id="password" placeholder="Adgangskode">
                 </div>

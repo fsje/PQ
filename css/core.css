@@ -45,6 +45,17 @@ h6 {
     margin-bottom: 15px;
 }
 
+label[for=accountNumber], label[for=password]
+{
+    color:#fff !important;
+    float: left;
+}
+
+.login-group{
+    width:70%;
+
+}
+
 /*
 * Header
  */
@@ -1040,7 +1051,7 @@ input#search:focus, input:active{
     padding: 25px;
     padding-right: 15px;
     padding-left: 15px;
-    text-align: center;
+
     padding-top: 40px;
 }
 /*
