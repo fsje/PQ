@@ -25,7 +25,12 @@ if(!isset($_SESSION['userid']))
                     <ul>
                         <?php
                             foreach($user as $k => $v){
-                                $company = $v['companyName'];
+                                if($v['id'] == 1) {
+                                    $company = '';
+                                }else{
+                                    $company = '/' . $v['companyName'];
+                                }
+                                
                                 echo '<li><b>Firma:</b> ' . $v['companyName'] . '</li>';
                                 echo '<li><b>Kontonummer:</b> ' . $v['id'] . '</li>';
                                 echo '<li><b>URL:</b><a class="url" href="https://premiumquality.dk/' . $v['companyName'] . '">https://premiumquality.dk/' . $v['companyName'] . '</a></li>';
@@ -38,8 +43,8 @@ if(!isset($_SESSION['userid']))
                 <h6>Menu</h6>
 
                 <ul>
-                    <li><a href="<?php echo '/' . $company . '/packaging'; ?>">Oversigt: Emballage</a></li>
-                    <li><a href="<?php echo '/' . $company . '/food'; ?>">Oversigt: Mad</a></li>
+                    <li><a href="<?php echo $company . '/packaging'; ?>">Oversigt: Emballage</a></li>
+                    <li><a href="<?php echo $company . '/food'; ?>">Oversigt: Mad</a></li>
                     <li class="spacing"></li>
                     <li><a href="/admEdit.php">Tilføj ny</a></li>
                     <li class="logOutBtn"><a href="/app/logout.php">Log ud</a></li>
