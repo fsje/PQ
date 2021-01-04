@@ -39,7 +39,7 @@ if(!isset($_SESSION['userid']))
                 <!-- Select food(s) -->
                     <div class="form-group col-md-6 form1">
                     <label for="relativefood">Passende fødevarer</label>
-                    <select name="relativeFood[]">
+                    <select name="relativeFood[1][model]">
                         <option id="relativefood" value="" selected>Vælg fødevarer</option>
                             <?php
                                 foreach($getFoods as $k => $v)
@@ -53,7 +53,9 @@ if(!isset($_SESSION['userid']))
                     <!-- File part -->
                     <div class="form-group col-md-6 form2">
                         <label for="inputPassword4">Billede</label>
-                        <input type="text" name="images[]" class="form-control" id="inputPassword4" placeholder="Billede">
+                        <input type="text" name="relativeFood[1][image]" class="form-control" id="inputPassword4" placeholder="Billede">
+                        <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
+                        <input type="hidden" name="relativeFood[1][type]" value="relative">
                     </div>
                 </div>
 
@@ -74,20 +76,22 @@ if(!isset($_SESSION['userid']))
         // remove loader when ready
         $('#loading').hide();
 
-        var max_fields  = 4;
+        var max_fields  = 5;
         var wrapper1    = $('.form1');
         var wrapper2    = $('.form2');
         var add_button  = $('.add-fields') 
 
         // X er lig 1
-        var x = 0;
+        var x = 1;
 
         $(add_button).click(function(e){
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper1).append('<div><select name="relativeFood[]"><option value="" selected>Vælg fødevarer</option><?php foreach($getFoods as $k => $v){echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';}?> </select></div>'); //add input box<a href="#" class="delete">Delete</a>
-                $(wrapper2).append('<div><input name="images[]" class="form-control" id="inputdefault" type="text"></div>'); //add input box <a href="#" class="delete">Delete</a>
+                $(wrapper1).append('<div><select name="relativeFood[' + x + '][model]"><option value="" selected>Vælg fødevarer</option><?php foreach($getFoods as $k => $v){echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';}?> </select></div>'); //add input box<a href="#" class="delete">Delete</a>
+                $(wrapper2).append('<div><input name="relativeFood[' + x + '][image]" class="form-control" id="inputdefault" type="text"></div>'); //add input box <a href="#" class="delete">Delete</a>
+               // $(wrapper2).append('<input name="relativeFood[' + x + '][product_id]" type="hidden" value="<?php echo $product['id']; ?>">');
+                $(wrapper2.append('<input type="hidden" name="relativeFood[' + x + '][type]" value="relative">'));
             }else{
                 alert("Du kan maks tilføje " + max_fields + " ad gangen!");
             }  

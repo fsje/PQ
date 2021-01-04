@@ -165,5 +165,19 @@ class ProductModel extends model
             return 'insert failed: ' . $this->conn->getLastError();
         }
     }
+
+    /**
+     * AddMultipleProducts
+     */
+
+     public function addMultipleProducts($data, $table)
+     {
+         $ids = $this->conn->insertMulti($table, $data);
+         if(!$ids){
+             echo 'insert failed: ' . $db->getLastError();
+         } else {
+             return $ids;
+         }
+     }
        
 }

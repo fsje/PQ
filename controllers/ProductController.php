@@ -111,4 +111,9 @@ class ProductController extends Controller
         return $this->model->addProductWithArray($data, $table);
     }
 
+    public function addMultipleProducts($table, $data)
+    {
+        return $this->model->addMultipleProducts($table, $data);
+    }
+
 }

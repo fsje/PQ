@@ -11,31 +11,37 @@ require_once '../autoload.php';
 echo '<pre>';
 print_r($_POST);
 
-/*
+$productData = array();
+
+foreach($_POST['relativeFood'] as $key => $value)
+{
+    $productData[] = $value;
+}
 
     // Add "relation" product
-    $productId          =   $_POST['productId'];
+    #$productId          =   $_POST['productId'];
 
-    $productData = array(
-        'model'         => $_POST['relativeFood'],
-        'type'          => 'relative',
-        'image'         => $_POST['image'],
-    );
+echo '<hr />';
+print_r($productData);
 
 // Initalize product controller
 $productController  = new ProductController();
 
-$idFromProduct          = $productController->addProductWithArray($productData, 'pq_products');
+$returnedIds          = $productController->addMultipleProducts($productData, 'pq_products');
+print_r($returnedIds);
 
-// Add Relation
-echo 'A product was added to the database, with the id of ' . $idFromProduct; 
-echo '<br />';
+$relationData = array();
 
-$relationData = array(
-    'product_id' => $_POST['productId'],
-    'related_id' => $idFromProduct,
-);
+$x = 0;
 
-$relatedProduct          = $productController->addProductWithArray($relationData, 'pq_products_related');
-echo 'A relation was added to the database, with the id of ' . $relatedProduct; 
-echo '<br />';*/
+while($x <= count($returnedIds)-1){
+    $relationData[$x]['product_id'] = $_POST['productId'];
+    $relationData[$x]['related_id'] = $returnedIds[$x];
+    $x++;
+}
+
+if($relatedProduct          = $productController->addMultipleProducts($relationData, 'pq_products_related'))
+{
+    $_SESSION['msg'] = 'Varen er blevet opdateret!';
+    header('location:/admin.php');
+}
