@@ -46,8 +46,13 @@ if(count($product) > 0 && !empty($productId))
 {
     $updatedProduct =   $productController->updateProductByID($productId, $productData, 'pq_products', 'id');
     $updatedDetails =   $productController->updateProductByID($productDetailsId, $productDetailsData, 'pq_products_details', 'product_id');
-    header('location:../../admin.php');
-    exit();
+    if($_POST['type'] == 'food')
+    {
+        $_SESSION['msg'] = 'Fødevaren er blevet opdateret!';
+        header('location:/admin.php');
+    }else{
+        header('location:/admAddFood.php?product=' . $productId);
+    }
 }
 
    

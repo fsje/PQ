@@ -39,5 +39,11 @@ echo '<br />';
     );
 
 if($addDetails            = $productController->addProductWithArray($productDetailsData, 'pq_products_details')){
-    header('location:/admAddFood.php?product=' . $idFromProduct);
+    if($_POST['type'] == 'food')
+    {
+        $_SESSION['msg'] = 'Fødevaren er blevet opdateret!';
+        header('location:/admin.php');
+    }else{
+        header('location:/admAddFood.php?product=' . $idFromProduct);
+    }
 }
