@@ -40,6 +40,11 @@ if(!isset($_SESSION['userid']))
                 </div>
             </div>
            <div id="adminArea" class="col-6 col-sm-12 col-md-6">
+               <?php if(isset($_SESSION['msg'])){
+                   echo '<b style="color:#fff; font-weight:bold;">' . $_SESSION['msg'] . '</b>';
+                   unset($_SESSION['msg']);
+               }
+               ?>
                 <h6>Menu</h6>
 
                 <ul>

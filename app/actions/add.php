@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['userid']))
 {
     header('location:login.php');
+    exit();
 }
 
 require_once '../autoload.php';
@@ -37,4 +38,6 @@ echo '<br />';
         'description'   =>      $_POST['description'],
     );
 
-$addDetails            = $productController->addProductWithArray($productDetailsData, 'pq_products_details');
+if($addDetails            = $productController->addProductWithArray($productDetailsData, 'pq_products_details')){
+    header('location:/admAddFood.php?product=' . $idFromProduct);
+}
