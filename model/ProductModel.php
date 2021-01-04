@@ -95,7 +95,7 @@ class ProductModel extends model
             }
             $products = $this->getProductById($relatedIds);
         }else{
-            return $products['error'] = 'An error occourd!';
+            return 'An error occourd!';
         }
 
 
