@@ -30,7 +30,7 @@ if(!isset($_SESSION['userid']))
                                 }else{
                                     $company = '/' . $v['companyName'];
                                 }
-                                
+
                                 echo '<li><b>Firma:</b> ' . $v['companyName'] . '</li>';
                                 echo '<li><b>Kontonummer:</b> ' . $v['id'] . '</li>';
                                 echo '<li><b>URL:</b><a class="url" href="https://premiumquality.dk/' . $v['companyName'] . '">https://premiumquality.dk/' . $v['companyName'] . '</a></li>';
@@ -46,7 +46,7 @@ if(!isset($_SESSION['userid']))
                     <li><a href="<?php echo $company . '/packaging'; ?>">Oversigt: Emballage</a></li>
                     <li><a href="<?php echo $company . '/food'; ?>">Oversigt: Mad</a></li>
                     <li class="spacing"></li>
-                    <li><a href="/admEdit.php">Tilføj ny</a></li>
+                    <li><a href="/admEdit.php">Tilføj emballage/fødevarer</a></li>
                     <li class="logOutBtn"><a href="/app/logout.php">Log ud</a></li>
                 </ul>
                 
