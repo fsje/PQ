@@ -32,9 +32,7 @@ class UserController extends Controller
 
     public function authUser($accountNumber, $password)
     {
-        $result = $this->model->authUser($accountNumber, $password);
-        #print_r($result);
-        
+        $result = $this->model->authUser($accountNumber, $password);        
     }
 
     public function getUserByAccountNumber($accountNumber)

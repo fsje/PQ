@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             exit();
         }else{
             header('location:../login.php');
+            $_SESSION['error'] = 'true';
             exit();
         }
 

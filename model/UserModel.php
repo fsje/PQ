@@ -65,11 +65,11 @@ class UserModel extends model
                         }
                         
                     }else{
-                        exit("error");
+                        return false;
                     }
                 }
             }else{
-                exit("error");
+                return false;
             }
 
         }

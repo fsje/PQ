@@ -82,7 +82,7 @@
 					</div>
 				</div>
                 <div class="col-4 col-sm-4 col-ms-4" align="right">
-                <a href="/login.php"><img class="loginIcon" src="img/icon_login.svg"></a>
+                <a href="/login.php"><img class="loginIcon" src="/img/icon_login.svg"></a>
                 <button type="button" id="sidebarCollapse" class="navbar-btn active">
                         <span></span>
                         <span></span>

@@ -10,6 +10,14 @@ if(isset($_SESSION['userid']))
         <div class="row" align="center">
             <div class="col-md-3"></div>
            <div id="aboutUs" class="col-12 col-sm-12 col-md-6">
+           <?php
+                if(isset($_SESSION['error']))
+                {
+                    echo '<b>Der opstod en fejl med dit brugernavn/adgangskode!</b><br />
+                    Hvis du har glemt dine oplysninger, kontakt <a href="https://plant2plast.com"><u>Plant2Plast</u></a>.<hr />';
+                    unset($_SESSION['error']);
+                }
+           ?>
             <form action="app/login.php" method="post">
                 <div class="form-group">
                     <label for="accountNumber">Kontonummer</label>
