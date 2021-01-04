@@ -45,7 +45,7 @@
                             echo '<a href="/admEdit.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
                         echo '</div>';
                         echo '<div class="productAdmin productDelete">';
-                            echo '<a href="/admDelete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
+                            echo '<a class="deleteLink" href="/app/actions/delete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
                         echo '</div>';
                     }
                     echo (isset($_GET['id'])) ? '<a href="details.php?id=' . $v["parent_id"] . '">' : '<a href="' . (!empty($accountName) ? '/' . $accountName . '' : '') . '/packaging/' . $v["id"] . '">';
@@ -63,6 +63,25 @@
 <div class="addProduct">
     <a href="/admEdit.php"><i class="productPlus fas fa-plus"></i></a>
 </div>
+
+<script>
+$(".deleteLink").on("click", function(e) {
+    var link = this;
+
+    e.preventDefault();
+
+    $("<div>Du er ved at slette en vare! Er du sikker?</div>").dialog({
+        buttons: {
+            "Ja": function() {
+                window.location = link.href;
+            },
+            "Nej, fortryd": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+});
+</script>
     <?php
         require_once 'views/includes/footer.php';
     ?>

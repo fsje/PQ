@@ -116,4 +116,8 @@ class ProductController extends Controller
         return $this->model->addMultipleProducts($table, $data);
     }
 
+    public function deleteProduct($productId){
+        return $this->model->deleteProduct($productId);
+    }
+
 }

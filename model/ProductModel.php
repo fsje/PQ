@@ -179,5 +179,22 @@ class ProductModel extends model
              return $ids;
          }
      }
+
+     public function deleteProduct($product_id)
+     {
+             $this->conn->where('id', $product_id);
+             if($this->conn->delete('pq_products'))
+             {
+                 $this->conn->where('product_id', $product_id);
+                 if($this->conn->delete('pq_products_details')){
+
+                     $this->conn->where('product_id', $product_id);
+                     if($this->conn->delete('pq_products_related')){
+                         return true;
+                 }
+             }
+
+        }
+    }
        
 }
