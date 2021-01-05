@@ -28,7 +28,7 @@ if(isset($_SESSION['userid']))
                     <label for="password">Adgangskode</label>
                     <input name="password" type="password" class="form-control" id="password" placeholder="Adgangskode">
                 </div>
-                <button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" class="btn btn-light">Login</button>
             </form>
             </div>
 				
