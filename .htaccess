@@ -20,6 +20,8 @@ RewriteRule ^home*$ ./index.php
 
 RewriteRule ^Q8*$ ./index.php?account=Q8
 RewriteRule ^q8*$ ./index.php?account=Q8
+RewriteRule ^Frederik*$ ./index.php?account=Frederik
+RewriteRule ^Frederik*$ ./index.php?account=Frederik
 
 # Overviews
 RewriteRule ^food*$ ./food.php
