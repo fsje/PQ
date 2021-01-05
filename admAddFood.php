@@ -56,6 +56,7 @@ if(!isset($_SESSION['userid']))
                         <input type="text" name="relativeFood[1][image]" class="form-control" id="inputPassword4" placeholder="Billede">
                         <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="relativeFood[1][type]" value="relative">
+                        <input type="hidden" name="relativeFood[1][accountNumber]" value="<?php echo $_SESSION['userid']; ?>"
                     </div>
                 </div>
 
