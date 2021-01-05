@@ -56,7 +56,8 @@ if(!isset($_SESSION['userid']))
                         <input type="text" name="relativeFood[1][image]" class="form-control" id="inputPassword4" placeholder="Billede">
                         <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="relativeFood[1][type]" value="relative">
-                        <input type="hidden" name="relativeFood[1][accountNumber]" value="<?php echo $_SESSION['userid']; ?>"
+                        <input type="hidden" name="relativeFood[1][accountNumber]" value="<?php echo $_SESSION['userid']; ?>">
+                        <input type="hidden" name="relativeFood[1][parent_id]" value="<?php echo $product['id']; ?>">
                     </div>
                 </div>
 
@@ -92,7 +93,9 @@ if(!isset($_SESSION['userid']))
                 $(wrapper1).append('<div><select name="relativeFood[' + x + '][model]"><option value="" selected>Vælg fødevarer</option><?php foreach($getFoods as $k => $v){echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';}?> </select></div>'); //add input box<a href="#" class="delete">Delete</a>
                 $(wrapper2).append('<div><input name="relativeFood[' + x + '][image]" class="form-control" id="inputdefault" type="text"></div>'); //add input box <a href="#" class="delete">Delete</a>
                // $(wrapper2).append('<input name="relativeFood[' + x + '][product_id]" type="hidden" value="<?php echo $product['id']; ?>">');
-                $(wrapper2.append('<input type="hidden" name="relativeFood[' + x + '][type]" value="relative">'));
+                $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][accountNumber]" value="<?php echo $_SESSION['userid']; ?>">');
+                $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][type]" value="relative">');
+                $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][parent_id]" value="<?php echo $product['id']; ?>">');
             }else{
                 alert("Du kan maks tilføje " + max_fields + " ad gangen!");
             }  

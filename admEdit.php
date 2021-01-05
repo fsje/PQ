@@ -50,8 +50,8 @@ if(!isset($_SESSION['userid']))
                     <div class="form-group">
                         <label for="inputsm">Produkttype</label>
                         <select name="type" <?php echo (isset($_GET['product']) ? 'disabled' : ''); ?>>
-                            <option value="packaging" <?php echo (isset($product['type']) == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
-                            <option value="food" <?php echo (isset($product['type']) == 'food' ? 'selected' : ' '); ?>>Mad</option>
+                            <option value="packaging" <?php echo (isset($product['type']) && $product['type'] == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
+                            <option value="food" <?php echo (isset($product['type']) && $product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
                         </select>
                     </div>
         </div>

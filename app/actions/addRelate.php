@@ -19,8 +19,10 @@ foreach($_POST['relativeFood'] as $key => $value)
 // Initalize product controller
 $productController  = new ProductController();
 
+// Add multiple products (all packaging-food items)
 $returnedIds          = $productController->addMultipleProducts($productData, 'pq_products');
 
+// Add relatives to product -> food.
 $relationData = array();
 
 $x = 0;
