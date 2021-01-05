@@ -8,9 +8,6 @@ if(!isset($_SESSION['userid']))
 
 require_once '../autoload.php';
 
-echo '<pre>';
-print_r($_POST);
-
 $productData = array();
 
 foreach($_POST['relativeFood'] as $key => $value)
@@ -18,17 +15,11 @@ foreach($_POST['relativeFood'] as $key => $value)
     $productData[] = $value;
 }
 
-    // Add "relation" product
-    #$productId          =   $_POST['productId'];
-
-echo '<hr />';
-print_r($productData);
 
 // Initalize product controller
 $productController  = new ProductController();
 
 $returnedIds          = $productController->addMultipleProducts($productData, 'pq_products');
-print_r($returnedIds);
 
 $relationData = array();
 
