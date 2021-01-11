@@ -49,7 +49,7 @@ if(!isset($_SESSION['userid']))
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Produkttype</label>
-                        <select name="type" <?php echo (isset($_GET['product']) ? 'disabled' : ''); ?>>
+                        <select name="type" <?php echo (isset($_GET['product']) ? '' : ''); ?>>
                             <option value="packaging" <?php echo (isset($product['type']) && $product['type'] == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
                             <option value="food" <?php echo (isset($product['type']) && $product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
                         </select>
@@ -83,9 +83,11 @@ if(!isset($_SESSION['userid']))
             <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
         </div>
         <div align="center" class="col-12 col-lg-12 col-sm-12">
-            <input class="btn btn-warning" style="font-weight:bold;" type="submit" value="Gem & Videre">
-            <br />
-            <a href=/admin.php#">Fortryd</a>
+                <!-- Buttons -->
+                <div class="btn-group" role="group" aria-label="Actions">
+                    <button href="#" class="btn btn-secondary">Fortryd</button>
+                    <button type="submit" class="btn btn-warning"><b>Videre</b></button>
+                </div>
         </div>
         </form>
     </div>

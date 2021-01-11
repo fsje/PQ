@@ -14,6 +14,7 @@ if(!isset($_SESSION['userid']))
         $productDetails     = $productController->getProductDetails($product['id']);
         $getFoods           = $productController->getProductsByType('food', $_SESSION['userid']);
     }
+
 ?>
 
 <!-- CONTENT -->

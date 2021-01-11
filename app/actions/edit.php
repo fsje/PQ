@@ -8,7 +8,6 @@ if(!isset($_SESSION['userid']))
 
 require_once '../autoload.php';
 
-
 if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
 {
 
