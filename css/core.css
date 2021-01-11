@@ -1551,8 +1551,8 @@ h3.category-text:hover {
      color:#fff;
  }
 
-select[name='relativeFood[]']:nth-child(1) {margin-top: 20px;}
-input[name='images[]']:nth-child(1){margin-top:20px;}
+.relativeFoodInput {margin-top: 20px;}
+.imagesInput{margin-top:20px;}
 
 #loading {
     width: 100%;
