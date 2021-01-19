@@ -1461,7 +1461,8 @@ h3.category-text:hover {
     background: rgba(255,255,255, .8);
     width:50px;
     min-height: 100px;
-    padding:20px;
+    padding:40px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .avatar {
@@ -1500,7 +1501,7 @@ h3.category-text:hover {
 
 
 #adminArea {
-    background: rgba(0,0,0,0.5);
+    background: rgba(70,70,70,.73);
     width:100px;
     min-height:100px;
     padding:10px;
