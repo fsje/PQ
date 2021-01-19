@@ -33,14 +33,14 @@
         <div class="col-sm-0 col-md-2"></div>
         <div class="col-12 col-sm-12 col-md-4 product-detail-picture">
             <div class="product-picture">
-            <img class="modalTrigger" src="<?php echo (!empty($_GET['account']) ?  '../' : ''); ?>../img/products/<?php echo $searchedProduct['model']; ?>.png">
+            <img class="modalTrigger" src="<?php echo (!empty($_GET['account']) ?  '../' : ''); ?>../img/products/<?php echo $searchedProduct['image']; ?>">
             <!-- Modal -->
             <div class="modal">
                 <!-- Close -->
                 <span class="close">&times;</span>
                 <!-- Content -->
                 <div class="modal-content">
-                    <img class="" src="<?php echo (!empty($_GET['account']) ?  '../' : ''); ?>../img/products/<?php echo $searchedProduct['model']; ?>.png" id="img01">
+                    <img class="" src="<?php echo (!empty($_GET['account']) ?  '../' : ''); ?>../img/products/<?php echo $searchedProduct['image']; ?>" id="img01">
                     <?php
                     if($searchedProduct['ean'] != 0)
                     {

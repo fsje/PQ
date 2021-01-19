@@ -49,7 +49,7 @@
                     }
                     echo (isset($_GET['id'])) ? '<a href="../packaging/' . $v["parent_id"] . '">' : '<a href="' . (!empty($accountName) ? '/' . $accountName . '' : '') .  '/food/' . $v["id"] . '">';
                     echo '<div class="productBox">';
-                      echo '<img class="productImg" src="https://premiumquality.dk/img/products/' . $v["model"] . '.png">';
+                      echo '<img class="productImg" src="https://premiumquality.dk/img/products/' . $v["image"] . '">';
                     echo '</div>';
                 echo '</a>';
             echo '</div>';

@@ -6,7 +6,53 @@ if(!isset($_SESSION['userid']))
     header('location:login.php');
 }
 
+
 require_once '../autoload.php';
+
+// Image processing
+$currentDirectory       = getcwd();     // current dir.
+$uploadDirectory        = '/img/products/'; // preferede upload
+
+$errors                 = []; // Error array.
+
+$fileExtensionsAllowed = ['jpeg','jpg','png']; // These will be the only file extensions allowed 
+
+$fileName = $_FILES['packagingImage']['name'];
+$fileSize = $_FILES['packagingImage']['size'];
+$fileTmpName  = $_FILES['packagingImage']['tmp_name'];
+$fileType = $_FILES['packagingImage']['type'];
+$fileExtension = strtolower(end(explode('.',$fileName)));
+
+$uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . basename($fileName); 
+
+$didUpload = '';
+if (! in_array($fileExtension,$fileExtensionsAllowed)) {
+    $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+  }
+
+  if ($fileSize > 4000000) {
+    $errors[] = "File exceeds maximum size (4MB)";
+  }
+
+  if (empty($errors)) {
+    $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+
+    if ($didUpload) {
+      echo "The file " . basename($fileName) . " has been uploaded";
+    } else {
+      echo "An error occurred. Please contact the administrator.";
+    }
+  } else {
+    foreach ($errors as $error) {
+      echo $error . "These are the errors" . "\n";
+    }
+  }
+
+  if(!$didUpload){
+      $image = $_POST['image'];
+  }else{
+      $image = basename($fileName);
+  }
 
 if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
 {
@@ -16,7 +62,7 @@ if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
 
     $productData = array(
         'model'         => $_POST['modelP2P'],
-        'image'         => $_POST['image'],
+        'image'         => $image,
         'ean'           => $_POST['ean'],
         'type'          => $_POST['type'],
     );

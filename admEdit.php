@@ -30,7 +30,7 @@ if(!isset($_SESSION['userid']))
             </h2>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
-                <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post">
+                <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="inputdefault">Varenummer (Plant2Plast)</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
@@ -68,9 +68,19 @@ if(!isset($_SESSION['userid']))
                         <label for="inputsm">Materiale</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text">
                     </div>
+                    <?php
+                        if(isset($_GET['product'])){
+                    ?>
                     <div class="form-group">
-                        <label for="inputsm">Billede</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
+                        <label for="inputsm">Nuværende billedesti</label>
+                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
+                    </div>
+                    <?php 
+                        }
+                    ?>
+                    <div class="form-group">
+                        <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
+                        <input type="file" name="packagingImage" class="form-control-file" id="image">
                     </div>
         </div>
     </div>

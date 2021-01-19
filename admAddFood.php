@@ -45,7 +45,7 @@ if(!isset($_SESSION['userid']))
                             <?php
                                 foreach($getFoods as $k => $v)
                                 {
-                                    echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['seo_alias'] . '</option>';
+                                    echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';
                                 }
                             ?>
                     </select>
