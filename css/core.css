@@ -797,7 +797,8 @@ input#search:focus, input:active{
     width:100%;
     min-height:100px;
     color: #fff;
-    padding:10px;
+    padding:20px;
+    border-radius: 10px;
 }
 
 .productTextarea {
