@@ -33,10 +33,10 @@ if(!isset($_SESSION['userid']))
             </h2>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
-                <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post" enctype="multipart/form-data">
+                <form action="app/actions/<?php echo (isset($_GET['product']) ? 'editFood.php' : 'addFood.php'); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="inputdefault">Fødevarens navn</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
+                        <input class="form-control" name="productName" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" id="inputdefault" type="text">
                     </div> 
         </div>
         <div class="col-6 col-sm-12 col-md-6">
@@ -52,7 +52,7 @@ if(!isset($_SESSION['userid']))
                     ?>
                     <div class="form-group">
                         <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
-                        <input type="file" name="packagingImage" class="form-control-file" id="image">
+                        <input type="file" name="foodImage" class="form-control-file" id="image">
                     </div>
         </div>
     </div>
