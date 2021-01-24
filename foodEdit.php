@@ -45,7 +45,7 @@ if(!isset($_SESSION['userid']))
                     ?>
                     <div class="form-group">
                         <label for="inputsm">Nuværende billedesti</label>
-                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text" readonly>
                     </div>
                     <?php 
                         }
@@ -89,7 +89,7 @@ if(!isset($_SESSION['userid']))
         <?php
             if($rowCount % $numOfCols == 0) { ?> </div> <?php } } ?>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
-            <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
+
         </div>
         <hr />
 
