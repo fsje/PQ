@@ -21,7 +21,8 @@ $fileName = $_FILES['foodImage']['name'];
 $fileSize = $_FILES['foodImage']['size'];
 $fileTmpName  = $_FILES['foodImage']['tmp_name'];
 $fileType = $_FILES['foodImage']['type'];
-$fileExtension = strtolower(end(explode('.',$fileName)));
+$tmp = explode('.',$fileName);
+$fileExtension = strtolower(end($tmp));
 
 $uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . basename($fileName); 
 
@@ -47,8 +48,6 @@ if (! in_array($fileExtension,$fileExtensionsAllowed)) {
     }
   }
 
-
-
     // Check product information
     $productId          =   $_POST['productId'];
 
@@ -65,20 +64,30 @@ $productController  = new ProductController();
 $idFromProduct          = $productController->addProductWithArray($productData, 'pq_products');
 echo 'A product was added to the database, with the id of ' . $idFromProduct; 
 echo '<br />';
-    // Check product details
 
-    $productDetailsId   =   $_POST['productDetailsId'];
-    $productDetailsData = array(
-        'product_id'    =>      $idFromProduct,
-        'name'          =>      $_POST['productName'],
-    );
+print_r($_POST['fittingPackaging']);
 
-if($addDetails            = $productController->addProductWithArray($productDetailsData, 'pq_products_details')){
-    if($_POST['type'] == 'food')
-    {
-        $_SESSION['msg'] = 'Fødevaren er blevet opdateret!';
-        #header('location:/admin.php');
-    }else{
-        #header('location:/admAddFood.php?product=' . $idFromProduct);
-    }
+// Initialize relationsdata
+$relationsData = array();
+
+foreach($_POST['fittingPackaging'] as $k => $v){
+  $relationsData[$k]['product_id'] = $idFromProduct;
+  $relationsData[$k]['related_id'] = $v;
 }
+
+$relatedProduct          = $productController->addMultipleProducts($relationsData, 'pq_products_related');
+
+
+/**
+while($x <= count($_POST['fittingPackaging'])-1){
+    $relationData[$x]['product_id'] = $idFromProduct;
+    $relationData[$x]['related_id'] = $_POST['fittingPackaging'];
+    $x++;
+}
+
+if($relatedProduct          = $productController->addMultipleProducts($relationData, 'pq_products_related'))
+{
+    $_SESSION['msg'] = 'Varen er blevet opdateret!';
+    header('location:/admin.php');
+}
+*/

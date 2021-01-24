@@ -115,7 +115,7 @@
                          if($rowCount % $numOfCols == 0) echo '<div class="row spacer">';
                             echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">';
                                 echo '<div class="relatedBox">';
-                                  echo '<img class="productImg" src="' . (!empty($_GET['account']) ?  '../' : '') . '../img/products/' . $v["model"] . '.png">';
+                                  echo '<img class="productImg" src="' . (!empty($_GET['account']) ?  '../' : '') . '../img/products/' . $v["image"] . '">';
                                 echo '</div>';
                             echo '</div>';
                             

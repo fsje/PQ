@@ -14,7 +14,7 @@ if(!isset($_SESSION['userid']))
         $productDetails = $productController->getProductDetails($product['id']);
     }
 
-    $getPackaging = $productController->getProductsByType('packaging', $_SESSION['userid']);
+    $getPackaging = $productController->getProductsByType('relative', $_SESSION['userid']);
 
 ?>
 
@@ -56,20 +56,44 @@ if(!isset($_SESSION['userid']))
                     </div>
         </div>
     </div>
-    <div id="contentArea" class="row">
-        <div class="col-12 col-lg-12 col-sm-12">
-                <?php
-                    foreach($getPackaging as $k => $v){
-                    echo '<div class="form-check">';
-                    echo '<input name="fittingPackaging[]" class="form-check-input" type="checkbox" value="' . $v['model'] . '" id="' . $v['model'] . '">';
-                    echo '<label class="form-check-label" for="' . $v['model'] . '">' . $v['model'] . '</label>';
-                    echo '</div>';
-                    }
-                ?>
+    <div id="contentArea" style="margin-right:-15px; margin-left:-15px;">
+        <h2>Vælg emballage der passer til ... </h2>
+         <?php
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        
+        $countedPackaging = count($getPackaging);
+        if($countedPackaging <= 6) {
+            $numOfCols = 1;
+        }elseif($countedPackaging > 6 && $countedPackaging < 12)
+        {
+            $numOfCols = 2;
+        }elseif($countedPackaging > 12 && $countedPackaging < 18)
+        {
+            $numOfCols = 3;
+        }elseif($countedPackaging > 18)
+        {
+            $numOfCols = 4;
+        }
 
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
+        foreach ($getPackaging as $k => $v){
+        if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
+            $rowCount++; ?>  
+                <div class="col-md-<?php echo $bootstrapColWidth; ?>">
+                    <div class="form-check">
+                    <input name="fittingPackaging[]" class="form-check-input" type="checkbox" value="<?php echo $v['id']; ?>" id="<?php echo $v['model']; ?>">
+                    <label class="form-check-label" for="<?php echo $v['model']; ?>"><?php echo $v['model']; ?></label>
+                    </div>
+                </div>
+        <?php
+            if($rowCount % $numOfCols == 0) { ?> </div> <?php } } ?>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
             <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
         </div>
+        <hr />
+
+        <div class="row">
         <div align="center" class="col-12 col-lg-12 col-sm-12">
                 <!-- Buttons -->
                 <div class="btn-group" role="group" aria-label="Actions">
@@ -80,6 +104,7 @@ if(!isset($_SESSION['userid']))
         </form>
     </div>
 </div>
+
 
 
 <div class="disp">
