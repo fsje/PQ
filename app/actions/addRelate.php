@@ -15,6 +15,8 @@ foreach($_POST['relativeFood'] as $key => $value)
     $productData[] = $value;
 }
 
+print_r($productData);
+/*
 
 // Initalize product controller
 $productController  = new ProductController();
@@ -26,6 +28,17 @@ $returnedIds          = $productController->addMultipleProducts($productData, 'p
 $relationData = array();
 
 $x = 0;
+
+while($x <= count($returnedIds)-1){
+    $relationData[$x]['product_id'] = $_POST['productId'];
+    $relationData[$x]['related_id'] = $returnedIds[$x];
+    $x++;
+}
+
+// New data
+$relateToFood = array();
+
+$y = 0;
 
 while($x <= count($returnedIds)-1){
     $relationData[$x]['product_id'] = $_POST['productId'];
