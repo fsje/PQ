@@ -59,6 +59,7 @@ if(!isset($_SESSION['userid']))
                         <input type="hidden" name="relativeFood[1][type]" value="relative">
                         <input type="hidden" name="relativeFood[1][accountNumber]" value="<?php echo $_SESSION['userid']; ?>">
                         <input type="hidden" name="relativeFood[1][parent_id]" value="<?php echo $product['id']; ?>">
+                        <input type="hidden" class="foodid1" name="relativeFood[1][food_id]" value="">
                     </div>
                 </div>
 
@@ -97,6 +98,7 @@ if(!isset($_SESSION['userid']))
                 $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][accountNumber]" value="<?php echo $_SESSION['userid']; ?>">');
                 $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][type]" value="relative">');
                 $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][parent_id]" value="<?php echo $product['id']; ?>">');
+                $(wrapper2).append('<input type="hidden" class="foodid' + x + '" name="relativeFood[' + x + '][food_id]" value="1">');
             }else{
                 alert("Du kan maks tilføje " + max_fields + " ad gangen!");
             }  
@@ -119,6 +121,11 @@ if(!isset($_SESSION['userid']))
             $(this).parent('div').remove();
             x--;
         })
+
+        $(".relativeFoodInput").change(function(){
+            alert("Selection: " + $("option:selected", this).data('id') + ":" + $("option:selected", this).text());
+            $(".foodid1").val($("option:selected", this).data('id'));
+        });
 
     });
 </script>

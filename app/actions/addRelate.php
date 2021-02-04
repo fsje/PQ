@@ -10,13 +10,15 @@ require_once '../autoload.php';
 
 $productData = array();
 
+
 foreach($_POST['relativeFood'] as $key => $value)
 {
     $productData[] = $value;
 }
 
 print_r($productData);
-/*
+
+/**
 
 // Initalize product controller
 $productController  = new ProductController();
@@ -51,3 +53,4 @@ if($relatedProduct          = $productController->addMultipleProducts($relationD
     $_SESSION['msg'] = 'Varen er blevet opdateret!';
     header('location:/admin.php');
 }
+*/
