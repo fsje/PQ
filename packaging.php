@@ -35,6 +35,7 @@
                 $numOfCols = 4;
                 $rowCount = 0;
                 $bootstrapColWidth = 12 / $numOfCols;
+                if(isset($product)){
                 foreach($product as $k => $v){
                   if($rowCount % $numOfCols == 0) echo '<div class="row spacer">';
                 echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">';
@@ -56,6 +57,13 @@
                   $rowCount++;
                 if($rowCount % $numOfCols == 0) echo '</div>';
               }
+            }else{
+                echo '<div class="row justify-content-center">';
+                echo ' <div id="aboutUs" class="col-12 col-sm-12 col-md-6">';
+                echo '<p><b>Ingen varer!</b></p><p>Det ser ud til at der ikke er nogle varer. <br /><a href="https://plant2plast.com"><u>Kontakt os</u></a> såfremt at du mener, at der er tale om en fejl.</p>';
+                echo '</div>';
+                echo '</div>';
+            }
             ?>
 
     </div>
