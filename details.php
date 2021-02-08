@@ -1,6 +1,20 @@
 <?php
+    session_start();
     require 'app/autoload.php';
+
+
     $products = new ProductController();
+    $accounts = new AccountController();
+    $users    = new UserController();
+   
+    if(isset($_GET['account']) && !empty($_GET['account'])){
+        $accountName = $_GET['account'];
+        $accountId = $accounts->getAccountIdByName($_GET['account']);
+   }elseif(empty($_GET['account']))
+   {
+       $accountId = 1;
+   }
+
     if(isset($_GET['id'])){
         $searchedProduct    = $products->getProductById($_GET['id']);
         $productDetails     = $products->getProductDetails($_GET['id']);
@@ -114,6 +128,12 @@
                     foreach($foodPictures as $k => $v){
                          if($rowCount % $numOfCols == 0) echo '<div class="row spacer">';
                             echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">';
+                            if(isset($_SESSION['userid']) && $_SESSION['userid'] == $accountId){
+                                echo '<div class="productAdmin productDelete">';
+                                echo '<a class="deleteLink" href="/app/actions/delete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
+                                echo '</div>';
+                            }
+                            
                                 echo '<div class="relatedBox">';
                                   echo '<img class="productImg" src="' . (!empty($_GET['account']) ?  '../' : '') . '../img/products/' . $v["image"] . '">';
                                 echo '</div>';
