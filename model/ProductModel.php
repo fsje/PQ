@@ -103,6 +103,26 @@ class ProductModel extends model
     }
 
 
+/**
+ * GetProductsByModel
+ */
+public function getProductsByModel($model)
+{
+    if(is_array($model)){
+        $this->conn->where('model', $model, 'IN');
+    }else{
+        $this->conn->where('model', $model);
+    }
+    $result = $this->conn->get('pq_products');
+
+    if($this->conn->count > 0){
+        return $result;
+       
+    }else{
+        exit('error');
+    }
+}
+
     /**
      * getProductByTerm
      * @param string $term search term

@@ -50,6 +50,14 @@ class ProductController extends Controller
        # return $result;
     }
 
+    public function getProductsByModel($model)
+    {
+
+        $result = $this->model->getProductsByModel($model);
+        
+        return $result;
+    }
+
     public function getProductsByRelation($type, $product_id)
     {
         $result = $this->model->getProductsByRelation($type, $product_id);
