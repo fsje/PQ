@@ -31,42 +31,43 @@ if(!isset($_SESSION['userid']))
         </div>
         <div class="col-6 col-sm-12 col-md-6">
                 <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                        <label for="inputsm">Produkttype</label>
+                        <select name="type" id="productType" <?php echo (isset($_GET['product']) ? '' : ''); ?>>
+                            <option value="">Vælg venligst type</option>
+                            <option value="packaging" <?php echo (isset($product['type']) && $product['type'] == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
+                            <option value="food" <?php echo (isset($product['type']) && $product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="inputdefault">Varenummer (Plant2Plast)</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="inputlg">Varenummer (Kunde)</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
+                        <label class="packagingOnly" for="inputlg">Varenummer (Kunde)</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="inputsm">EAN Nummer</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['ean'] : ''); ?>" name="ean" id="inputsm" type="text">
+                        <label class="packagingOnly" for="inputsm">EAN Nummer</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $product['ean'] : ''); ?>" name="ean" id="inputsm" type="text">
                     </div>
                     <div class="form-group">
                         <label for="inputsm">Produktnavn</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text">
                     </div>
-                    <div class="form-group">
-                        <label for="inputsm">Produkttype</label>
-                        <select name="type" <?php echo (isset($_GET['product']) ? '' : ''); ?>>
-                            <option value="packaging" <?php echo (isset($product['type']) && $product['type'] == 'packaging' ? 'selected' : ' '); ?>>Emballage</option>
-                            <option value="food" <?php echo (isset($product['type']) && $product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
-                        </select>
-                    </div>
         </div>
         <div class="col-6 col-sm-12 col-md-6">
                     <div class="form-group">
-                        <label for="inputdefault">Størrelse</label>
-                        <input class="form-control" id="inputdefault" type="text">
+                        <label class="packagingOnly" for="inputdefault">Størrelse</label>
+                        <input class="form-control packagingOnly" id="inputdefault" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="inputlg">Kolistørrelse</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
+                        <label class="packagingOnly" for="inputlg">Kolistørrelse</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="inputsm">Materiale</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text">
+                        <label class="packagingOnly" for="inputsm">Materiale</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text">
                     </div>
                     <?php
                         if(isset($_GET['product'])){
@@ -86,7 +87,7 @@ if(!isset($_SESSION['userid']))
     </div>
     <div id="contentArea" class="row">
         <div class="col-12 col-lg-12 col-sm-12">
-            <textarea class="productTextarea" name="description" placeholder="Beskrivelse">
+            <textarea class="productTextarea packagingOnly" name="description" placeholder="Beskrivelse">
                 <?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?>
             </textarea>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
@@ -102,12 +103,6 @@ if(!isset($_SESSION['userid']))
         </form>
     </div>
 </div>
-
-
-<div class="disp">
-	<img src="https://premiumquality.dk/img/Baner-cake-pq-dis.png" id="dispImg">
-</div>
-
             <?php
                 require_once 'views/includes/footer.php';
             ?>

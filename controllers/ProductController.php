@@ -32,8 +32,10 @@ class ProductController extends Controller
     public function getProductsByType($type, $accountNumber)
     {
             $result = $this->model->getProducts($type, $accountNumber);
-            foreach($result as $key => $value){
-                $result[$key] = $value;
+            if(isset($result)){
+                foreach($result as $key => $value){
+                    $result[$key] = $value;
+                }
             }
             return $result;
     }   
