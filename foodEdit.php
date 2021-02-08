@@ -60,20 +60,20 @@ if(!isset($_SESSION['userid']))
         <h2>Vælg emballage der passer til ... </h2>
          <?php
         //Columns must be a factor of 12 (1,2,3,4,6,12)
-        
-        $countedPackaging = count($getPackaging);
-        if($countedPackaging <= 6) {
-            $numOfCols = 1;
-        }elseif($countedPackaging > 6 && $countedPackaging < 12)
-        {
-            $numOfCols = 2;
-        }elseif($countedPackaging > 12 && $countedPackaging < 18)
-        {
-            $numOfCols = 3;
-        }elseif($countedPackaging > 18)
-        {
-            $numOfCols = 4;
-        }
+        if(isset($getPackaging)){
+            $countedPackaging = count($getPackaging);
+            if($countedPackaging <= 6) {
+                $numOfCols = 1;
+            }elseif($countedPackaging > 6 && $countedPackaging < 12)
+            {
+                $numOfCols = 2;
+            }elseif($countedPackaging > 12 && $countedPackaging < 18)
+            {
+                $numOfCols = 3;
+            }elseif($countedPackaging > 18)
+            {
+                $numOfCols = 4;
+            }
 
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
@@ -87,7 +87,7 @@ if(!isset($_SESSION['userid']))
                     </div>
                 </div>
         <?php
-            if($rowCount % $numOfCols == 0) { ?> </div> <?php } } ?>
+            if($rowCount % $numOfCols == 0) { ?> </div> <?php } }}else{echo 'OBS: Der er ingen emballage';} ?>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
 
         </div>
