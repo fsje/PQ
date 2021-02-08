@@ -7,6 +7,8 @@ if(!isset($_SESSION['userid']))
     exit();
 }
 
+$type = $_POST['type'];
+
 require_once '../autoload.php';
 
 // Image processing
@@ -51,7 +53,7 @@ if (! in_array($fileExtension,$fileExtensionsAllowed)) {
 
     // Check product information
     $productId          =   $_POST['productId'];
-
+if($type == 'packaging') {
     $productData = array(
         'model'         => $_POST['modelP2P'],
         'image'         => basename($fileName),
@@ -59,6 +61,13 @@ if (! in_array($fileExtension,$fileExtensionsAllowed)) {
         'type'          => $_POST['type'],
         'accountNumber' => $_SESSION['userid'],
     );
+  }elseif($type == 'food'){
+    $productData = array(
+      'image'         => basename($fileName),
+      'type'          => $_POST['type'],
+      'accountNumber' => $_SESSION['userid'],
+  );
+  }
 
 // Initalize product controller
 $productController  = new ProductController();

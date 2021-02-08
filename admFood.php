@@ -29,7 +29,7 @@ if(!isset($_SESSION['userid']))
                 ?>
             </h2>
         </div>
-        <div class="col-6 col-sm-12 col-md-6">
+        <div class="col-12 col-sm-12 col-md-12">
                 <form action="app/actions/<?php echo (isset($_GET['product']) ? 'edit.php' : 'add.php'); ?>" method="post" enctype="multipart/form-data">
                 <!--<div class="form-group">
                         <label for="inputsm">Produkttype</label>
@@ -39,36 +39,10 @@ if(!isset($_SESSION['userid']))
                             <option value="food" <?php #echo (isset($product['type']) && $product['type'] == 'food' ? 'selected' : ' '); ?>>Mad</option>
                         </select>
                     </div>-->
-                    <input type="hidden" name="type" value="packaging">
+                    <input type="hidden" name="type" value="food">
                     <div class="form-group">
-                        <label for="inputdefault">Varenummer (Plant2Plast)</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $product['model'] : ''); ?>" name="modelP2P" id="inputdefault" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputlg">Varenummer (Kunde)</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['reitan'] : ''); ?>" name="modelCustomer" id="inputlg" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputsm">EAN Nummer</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $product['ean'] : ''); ?>" name="ean" id="inputsm" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputsm">Produktnavn</label>
+                        <label for="inputsm">Navn på fødevarer</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text">
-                    </div>
-        </div>
-        <div class="col-6 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputdefault">Størrelse</label>
-                        <input class="form-control packagingOnly" id="inputdefault" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputlg">Kolistørrelse</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputsm">Materiale</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text">
                     </div>
                     <?php
                         if(isset($_GET['product'])){
@@ -84,17 +58,7 @@ if(!isset($_SESSION['userid']))
                         <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
                         <input type="file" name="packagingImage" class="form-control-file" id="image">
                     </div>
-        </div>
-    </div>
-    <div id="contentArea" class="row">
-        <div class="col-12 col-lg-12 col-sm-12">
-            <textarea class="productTextarea packagingOnly" name="description" placeholder="Beskrivelse">
-                <?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?>
-            </textarea>
-            <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
-            <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
-        </div>
-        <div align="center" class="col-12 col-lg-12 col-sm-12">
+                    <div align="center" class="col-12 col-lg-12 col-sm-12">
                 <!-- Buttons -->
                 <div class="btn-group" role="group" aria-label="Actions">
                     <button href="#" class="btn btn-secondary">Fortryd</button>
@@ -102,6 +66,7 @@ if(!isset($_SESSION['userid']))
                 </div>
         </div>
         </form>
+        </div>
     </div>
 </div>
             <?php
