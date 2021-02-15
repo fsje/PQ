@@ -10,7 +10,42 @@ require_once '../autoload.php';
 
 $productData = array();
 
+// Image processing
+$currentDirectory       = getcwd();     // current dir.
+$uploadDirectory        = '/img/products/'; // preferede upload
 
+$errors                 = []; // Error array.
+
+$fileExtensionsAllowed = ['jpeg','jpg','png']; // These will be the only file extensions allowed 
+echo '<pre>';
+foreach($_FILES['relativeFood'] as $key => $v){
+    print_r($v);
+}
+
+
+print_r($_FILES);
+print_r($_POST);
+/*
+$files = array_filter($_FILES['relativeFood[1][image]']['name']); //Use something similar before processing files.
+// Count the number of uploaded files in array
+$total_count = count($_FILES['relativeFood[1][image]']['name']);
+// Loop through every file
+for( $i=0 ; $i < $total_count ; $i++ ) {
+   //The temp file path is obtained
+   $tmpFilePath = $_FILES['relativeFood[1][image]']['tmp_name'][$i];
+   //A file path needs to be present
+   if ($tmpFilePath != ""){
+      //Setup our new file path
+      $newFilePath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . $_FILES['relativeFood[1][image]']['name'][$i];
+      //File is uploaded to temp dir
+      if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+         echo 'yay';
+      }
+   }
+}*/
+
+
+  
 foreach($_POST['relativeFood'] as $key => $value)
 {
     $productData[] = $value;
@@ -30,7 +65,7 @@ foreach($productData as $k => $v)
     }
 }
 
-print_r($foods);
+print_r($productData);
 
 // Initalize product controller
 $productController  = new ProductController();
@@ -41,7 +76,7 @@ foreach($getFoodIds as $k => $v)
     $foodIds[] =  $v['id'];
 }
 
-
+/*
 // Add multiple products (all packaging-food items)
 $returnedIds          = $productController->addMultipleProducts($productData, 'pq_products');
 

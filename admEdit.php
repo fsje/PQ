@@ -87,10 +87,7 @@ if(!isset($_SESSION['userid']))
         </div>
     </div>
     <div id="contentArea" class="row">
-        <div class="col-12 col-lg-12 col-sm-12">
-            <textarea class="productTextarea packagingOnly" name="description" placeholder="Beskrivelse">
-                <?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?>
-            </textarea>
+        <div class="col-12 col-lg-12 col-sm-12"><textarea class="productTextarea packagingOnly" name="description" placeholder="Beskrivelse"><?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?></textarea>
             <input type="hidden" name="productId" value="<?php echo $product['id']; ?>">
             <input type="hidden" name="productDetailsId" value="<?php echo $productDetails['product_id']; ?>">
         </div>
