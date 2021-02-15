@@ -209,6 +209,7 @@ public function getProductsByModel($model)
                  if($this->conn->delete('pq_products_details')){
 
                      $this->conn->where('product_id', $product_id);
+                     $this->conn->orWhere('related_id', $product_id);
                      if($this->conn->delete('pq_products_related')){
                          return true;
                  }

@@ -63,6 +63,7 @@ if($type == 'packaging') {
     );
   }elseif($type == 'food'){
     $productData = array(
+      'model'         => $_POST['productName'],
       'image'         => basename($fileName),
       'type'          => $_POST['type'],
       'accountNumber' => $_SESSION['userid'],

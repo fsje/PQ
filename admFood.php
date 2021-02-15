@@ -24,7 +24,7 @@ if(!isset($_SESSION['userid']))
                     if(isset($_GET['product'])){
                         echo 'Du er ved at redigere ' . $product['model'] . ' (' . $product['id'] . ')';
                     }else{
-                        echo 'Du er ved at oprette nyt emballage.';
+                        echo 'Du er ved at oprette en ny fødevarer.';
                     }
                 ?>
             </h2>
