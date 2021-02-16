@@ -62,16 +62,6 @@ if(!isset($_SESSION['userid']))
                         <label class="packagingOnly" for="inputsm">Materiale</label>
                         <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text" required>
                     </div>
-                    <?php
-                        if(isset($_GET['product'])){
-                    ?>
-                    <div class="form-group">
-                        <label for="inputsm">Nuværende billedesti</label>
-                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
-                    </div>
-                    <?php 
-                        }
-                    ?>
                     <div class="form-group">
                         <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
                         <input type="file" name="packagingImage" class="form-control-file" id="image">
@@ -96,7 +86,11 @@ if(!isset($_SESSION['userid']))
                 </div>
         </div>
         </form>
-
+        <?php if(isset($_GET['product'])){ ?>
+        <div class="disp">
+	<img src="https://premiumquality.dk/img/products/<?php echo $product['image']; ?>" id="dispImg">
+    </div>
+    <?php } ?>
         <script>
             $('.relations').click(function(e){
                 e.preventDefault();
