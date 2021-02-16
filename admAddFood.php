@@ -55,7 +55,7 @@ if(!isset($_SESSION['userid']))
                     <!-- File part -->
                     <div class="form-group col-md-6 form2">
                         <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
-                        <input type="file" name="relativeFood[1][image]" class="form-control-file" id="image">
+                        <input type="file" name="files[]" class="form-control-file imagesInput" id="image">
                     </div>
 
                                             
@@ -95,7 +95,7 @@ if(!isset($_SESSION['userid']))
             if (x < max_fields) {
                 x++;
                 $(wrapper1).append('<div><select class="relativeFoodInput" name="relativeFood[' + x + '][model]"><option value="" selected>Vælg fødevarer</option><?php foreach($getFoods as $k => $v){echo '<option value="' . $product['model'] . '-' . $v['model'] . '">' . $v['model'] . '</option>';}?> </select></div>'); //add input box<a href="#" class="delete">Delete</a>
-                $(wrapper2).append('<div><input type="file" name="relativeFood[' + x + '][image]" class="form-control-file" id="image"></div>'); //add input box <a href="#" class="delete">Delete</a>
+                $(wrapper2).append('<div><input type="file" name="files[]" class="form-control-file imagesInput" id="image"></div>'); //add input box <a href="#" class="delete">Delete</a>
                // $(wrapper2).append('<input name="relativeFood[' + x + '][product_id]" type="hidden" value="<?php echo $product['id']; ?>">');
                 $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][accountNumber]" value="<?php echo $_SESSION['userid']; ?>">');
                 $(wrapper2).append('<input type="hidden" name="relativeFood[' + x + '][type]" value="relative">');
