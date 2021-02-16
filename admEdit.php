@@ -62,6 +62,16 @@ if(!isset($_SESSION['userid']))
                         <label class="packagingOnly" for="inputsm">Materiale</label>
                         <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text" required>
                     </div>
+                    <?php
+                        if(isset($_GET['product'])){
+                    ?>
+                    <div class="form-group">
+                        <label for="inputsm">Nuværende billedesti</label>
+                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text" required>
+                    </div>
+                    <?php 
+                        }
+                    ?>
                     <div class="form-group">
                         <label for="image"><?php echo (isset($_GET['product']) ? 'Upload et nyt billede' : 'Upload billede'); ?></label>
                         <input type="file" name="packagingImage" class="form-control-file" id="image">

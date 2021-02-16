@@ -9,6 +9,7 @@ if(!isset($_SESSION['userid']))
 
 require_once '../autoload.php';
 
+$type = $_POST['type'];
 // Image processing
 $currentDirectory       = getcwd();     // current dir.
 $uploadDirectory        = '/img/products/'; // preferede upload
@@ -54,19 +55,20 @@ if (! in_array($fileExtension,$fileExtensionsAllowed)) {
       $image = basename($fileName);
   }
 
+  $productId          =   $_POST['productId'];
 if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
 {
 
     // Check product information
-    $productId          =   $_POST['productId'];
-
+   
+    if($type == 'packaging') {
     $productData = array(
         'model'         => $_POST['modelP2P'],
         'image'         => $image,
         'ean'           => $_POST['ean'],
         'type'          => $_POST['type'],
     );
-
+  }
     // Check product details
 
     $productDetailsId   =   $_POST['productDetailsId'];
@@ -80,6 +82,15 @@ if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
     );
 }
 
+if($type == 'food'){
+  $productData = array(
+    'model'         => $_POST['modelP2P'],
+    'image'         => $image,
+    'type'          => $_POST['type'],
+    'accountNumber' => $_SESSION['userid'],
+);
+}
+
 // Initalize product controller
 $productController  = new ProductController();
 
@@ -90,7 +101,10 @@ $product            = $productController->getProductById($productId);
 if(count($product) > 0 && !empty($productId))
 {
     $updatedProduct =   $productController->updateProductByID($productId, $productData, 'pq_products', 'id');
+
+    if($type == 'packaging') {
     $updatedDetails =   $productController->updateProductByID($productDetailsId, $productDetailsData, 'pq_products_details', 'product_id');
+    }
     if($_POST['type'] == 'food')
     {
         $_SESSION['msg'] = 'Fødevaren er blevet opdateret!';

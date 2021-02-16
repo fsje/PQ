@@ -41,7 +41,7 @@
                   
                     if(isset($_SESSION['userid']) && $_SESSION['userid'] == $accountId){
                         echo '<div class="productAdmin productEdit">';
-                            echo '<a href="/foodEdit.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
+                            echo '<a href="/admFood.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
                         echo '</div>';
                         echo '<div class="productAdmin productDelete">';
                         echo '<a class="deleteLink" href="/app/actions/delete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
