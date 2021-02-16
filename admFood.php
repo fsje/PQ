@@ -42,14 +42,14 @@ if(!isset($_SESSION['userid']))
                     <input type="hidden" name="type" value="food">
                     <div class="form-group">
                         <label for="inputsm">Navn på fødevarer</label>
-                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text">
+                        <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text" required>
                     </div>
                     <?php
                         if(isset($_GET['product'])){
                     ?>
                     <div class="form-group">
                         <label for="inputsm">Nuværende billedesti</label>
-                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text">
+                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text" required>
                     </div>
                     <?php 
                         }
