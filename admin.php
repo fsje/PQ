@@ -6,8 +6,8 @@ if(!isset($_SESSION['userid']))
     require_once 'views/includes/header.php';
 
     $userController = new UserController();
-    $user = $userController->getUserByAccountNumber($_SESSION['userid']);
-
+    $user = $userController->getAccountByUserId($_SESSION['userid']);
+    print_r($_SESSION['userid']);
 ?>
         <!-- CONTENT -->
 
@@ -32,7 +32,7 @@ if(!isset($_SESSION['userid']))
                                 }
 
                                 echo '<li><b>Firma:</b> ' . $v['companyName'] . '</li>';
-                                echo '<li><b>Kontonummer:</b> ' . $v['id'] . '</li>';
+                                echo '<li><b>Kontonummer:</b> ' . $v['accountNumber'] . '</li>';
                                 echo '<li><b>URL:</b><a class="url" href="https://premiumquality.dk/' . $v['companyName'] . '">https://premiumquality.dk/' . $v['companyName'] . '</a></li>';
                                 echo '<li><b>E-mail:</b> ' . $v['mail'] . '</li>';
                             }

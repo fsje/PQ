@@ -39,12 +39,8 @@ if(!isset($_SESSION['userid']))
             if($_SESSION['userid'] == 1){
                 echo '<h1>Administration</h1>';
         ?>
-        <form method="post" action="account.php">
-            <input type="submit" class="btn btn-danger btn-lg btn-block" value="Virksomhed (TBD)" disabled> 
-        </form>
-        <br />
         <form method="post" action="admUser.php">
-            <input type="submit" class="btn btn-danger btn-lg btn-block" value="Bruger"> 
+            <input type="submit" class="btn btn-danger btn-lg btn-block" value="Virksomhed"> 
         </form>
         <?php
             }

@@ -49,6 +49,20 @@ class UserModel extends model
         return false;
      }
 
+     public function getAccountByUserId($userid)
+     {
+        if(!empty($userid))
+        {
+            $this->conn->where('id', $userid);
+            $users = $this->conn->get('pq_users');
+            if($this->conn->count > 0) {
+                return $users;
+            }
+            return false;
+        }
+        return false;
+     }
+
     public function authUser($accountNumber, $password)
     {
         if(!empty($accountNumber) && !empty($password))

@@ -75,6 +75,8 @@ $userID          = $userController->addUserWithArray($userData, 'pq_users');
 
 
     $data = 'RewriteRule ^' . $_POST['companyName'] . '*$ ./index.php?account=' . $_POST['companyName'] . ''.PHP_EOL;
-    $fp = fopen('/.htaccess', 'a');
+    $fp = fopen('../../.htaccess', 'a');
     fwrite($fp, $data);
+
+    header('location:../../portal.php');
 

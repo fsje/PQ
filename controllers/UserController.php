@@ -47,6 +47,18 @@ class UserController extends Controller
         }
     }
 
+    public function getAccountByUserId($userid)
+    {
+        if(!empty($userid))
+        {
+            $result = $this->model->getAccountByUserId($userid);
+            foreach($result as $key => $value){
+                $result[$key] = $value;
+            }
+            return $result;
+        }
+    }
+
     public function addUserWithArray($data, $table)
     {
         return $this->model->addUserWithArray($data, $table);
