@@ -74,4 +74,19 @@ class UserModel extends model
 
         }
     }
+
+        /**
+     * addProductWithArray
+     * @param array data
+     * 
+     */
+    public function addUserWithArray($data, $table)
+    {
+        $id = $this->conn->insert($table, $data);
+        if($id){
+            return $id;
+        }else{
+            return 'insert failed: ' . $this->conn->getLastError();
+        }
+    }
 }

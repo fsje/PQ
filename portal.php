@@ -43,8 +43,8 @@ if(!isset($_SESSION['userid']))
             <input type="submit" class="btn btn-danger btn-lg btn-block" value="Virksomhed (TBD)" disabled> 
         </form>
         <br />
-        <form method="post" action="account.php">
-            <input type="submit" class="btn btn-danger btn-lg btn-block" value="Bruger (TBD)" disabled> 
+        <form method="post" action="admUser.php">
+            <input type="submit" class="btn btn-danger btn-lg btn-block" value="Bruger"> 
         </form>
         <?php
             }

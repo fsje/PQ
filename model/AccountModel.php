@@ -67,4 +67,25 @@ class AccountModel extends model
             exit('error');
         }
     }
+
+    public function getEveryAccount()
+    {
+            $products = $this->conn->get('pq_accounts');
+            if ($this->conn->count > 0) {
+                foreach ($products as $k => $v) {
+                    $this->properties[$v['id']] = $v;
+                }
+              return $this->properties;
+            }
+    }
+
+    public function addAccountWithArray($data, $table)
+    {
+        $id = $this->conn->insert($table, $data);
+        if($id){
+            return $id;
+        }else{
+            return 'insert failed: ' . $this->conn->getLastError();
+        }
+    }
 }

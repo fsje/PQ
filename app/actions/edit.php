@@ -78,7 +78,9 @@ if(isset($_POST['productId']) && isset($_POST['productDetailsId']))
         'name'          =>      $_POST['productName'],
         'material'      =>      $_POST['material'],
         'description'   =>      $_POST['description'],
-        
+        'height'        =>      $_POST['height'],
+        'width'         =>      $_POST['width'],
+        'diameter'      =>      $_POST['diameter']    
     );
 }
 

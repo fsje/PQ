@@ -48,20 +48,6 @@ if(!isset($_SESSION['userid']))
                         <label for="inputsm">Produktnavn</label>
                         <input class="form-control" value="<?php echo (isset($_GET['product']) ? $productDetails['name'] : ''); ?>" name="productName" id="inputsm" type="text" required>
                     </div>
-        </div>
-        <div class="col-6 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputdefault">Størrelse</label>
-                        <input class="form-control packagingOnly" id="inputdefault" type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputlg">Kolistørrelse</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="packagingOnly" for="inputsm">Materiale</label>
-                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text" required>
-                    </div>
                     <?php
                         if(isset($_GET['product'])){
                     ?>
@@ -77,6 +63,28 @@ if(!isset($_SESSION['userid']))
                         <input type="file" name="packagingImage" class="form-control-file" id="image">
                     </div>
         </div>
+        <div class="col-6 col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label class="packagingOnly" for="inputdefault">Højde (CM)</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['height'] : ''); ?>" id="inputdefault" name="height" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="packagingOnly" for="inputdefault">Bredde (CM)</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['width'] : ''); ?>" id="inputdefault" name="width" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="packagingOnly" for="inputdefault">Diameter</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['diameter'] : ''); ?>" id="inputdefault" name="diameter" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="packagingOnly" for="inputlg">Kolistørrelse</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['carton'] : ''); ?>" name="carton" id="inputlg" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="packagingOnly" for="inputsm">Materiale</label>
+                        <input class="form-control packagingOnly" value="<?php echo (isset($_GET['product']) ? $productDetails['material'] : ''); ?>" name="material" id="inputsm" type="text" required>
+                    </div>
+        </div>
     </div>
     <div id="contentArea" class="row">
         <div class="col-12 col-lg-12 col-sm-12"><textarea class="productTextarea packagingOnly" name="description" placeholder="Beskrivelse"><?php echo (isset($_GET['product']) ? $productDetails['description'] : ''); ?></textarea>
@@ -85,12 +93,12 @@ if(!isset($_SESSION['userid']))
         </div>
         <div align="center" class="col-12 col-lg-12 col-sm-12">
                 <!-- Buttons -->
+                <a id="back-link" class="btn btn-danger"><b>Fortryd</b></a>
                 <div class="btn-group" role="group" aria-label="Actions">
-                    <button href="#" class="btn btn-danger">Fortryd</button>
-                    <button type="submit" class="btn btn-success"><b>Opret & Næste</b></button>
+                    <button type="submit" class="btn btn-success"><b>Gem og gå til relationer</b></button>
                     <?php
                         if(isset($_GET['product'])){
-                            echo '<button class="relations btn btn-warning"><b>Relationer</b></button>';
+                            echo '<button class="relations btn btn-warning"><b>Gem</b></button>';
                         }
                     ?>
                 </div>
@@ -106,6 +114,13 @@ if(!isset($_SESSION['userid']))
                 e.preventDefault();
                 window.location.href = 'admAddFood.php?product=<?php echo $product['id']; ?>';
             });
+            
+            var element = document.getElementById('back-link');
+            element.setAttribute('href', document.referrer);
+            element.onclick = function() {
+            history.back();
+            return false;
+            }
         </script>
     </div>
 </div>

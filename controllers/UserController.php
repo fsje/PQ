@@ -47,4 +47,9 @@ class UserController extends Controller
         }
     }
 
+    public function addUserWithArray($data, $table)
+    {
+        return $this->model->addUserWithArray($data, $table);
+    }
+
 }

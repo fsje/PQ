@@ -67,7 +67,7 @@
     </div>
 </div>
 <div class="addProduct">
-    <a href="/admEdit.php"><i class="productPlus fas fa-plus"></i></a>
+    <a href="/portal.php"><i class="productPlus fas fa-plus"></i></a>
 </div>
 <script>
 $(".deleteLink").on("click", function(e) {

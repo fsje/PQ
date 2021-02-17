@@ -42,5 +42,22 @@ class AccountController extends Controller
        # return $result;
     }
 
+    public function getAllAccounts()
+    {
+
+        $result = $this->model->getEveryAccount();
+        if(isset($result)){
+            foreach($result as $key => $value){
+                $result[$key] = $value;
+            }
+        }
+        return $result;
+    }
+
+    public function addAccountWithArray($data, $table)
+    {
+        return $this->model->addAccountWithArray($data, $table);
+    }
+
 
 }
