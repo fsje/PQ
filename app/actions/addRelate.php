@@ -45,7 +45,7 @@ if(!empty(array_filter($_FILES['files']['name']))) {
             // If file with name already exist then append time in 
             // front of name of the file to avoid overwriting of file 
             if(file_exists($filepath)) { 
-                $filepath = $_SERVER['DOCUMENT_ROOT'] . $upload_dir . basename($fileName); 
+                $filepath = $_SERVER['DOCUMENT_ROOT'] . $upload_dir . time() .'-'. basename($file_name); 
                
                   
                 if( move_uploaded_file($file_tmpname, $filepath)) { 
@@ -94,7 +94,7 @@ foreach($productData as $k => $v)
    
     if(count($explode) == 2){
         $foods[] = $explode[1];
-    }elseif(count($explode > 2)){
+    }elseif(count($explode) > 2){
         $foods[] = $explode[2];
     }
 }
@@ -111,13 +111,13 @@ while($amountOfImages <= count($_FILES['files']['name'])-1)
 // Initalize product controller
 $productController  = new ProductController();
 
-$getFoodIds = $productController->getProductsByModel($foods);
+$getFoodIds = $productController->getProductsByModel($foods, $_SESSION['userid']);
 foreach($getFoodIds as $k => $v)
 {
     $foodIds[] =  $v['id'];
 }
 
-
+#print_r($productData);
 // Add multiple products (all packaging-food items)
 $returnedIds          = $productController->addMultipleProducts($productData, 'pq_products');
 
@@ -133,7 +133,6 @@ while($x <= count($returnedIds)-1){
 }
 
 $relatedProduct         = $productController->addMultipleProducts($relationData, 'pq_products_related');
-
 // Add relatives to food -> relative
 $foodRelations = array();
 
@@ -144,10 +143,7 @@ while($y <= count($foodIds)-1){
     $foodRelations[$y]['related_id'] = $returnedIds[$y];
     $y++;
 }
-
 print_r($foodRelations);
-
-
 if($relatedProduct          = $productController->addMultipleProducts($foodRelations, 'pq_products_related'))
 {
     $_SESSION['msg'] = 'Varen er blevet opdateret!';

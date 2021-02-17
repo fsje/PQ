@@ -52,10 +52,10 @@ class ProductController extends Controller
        # return $result;
     }
 
-    public function getProductsByModel($model)
+    public function getProductsByModel($model, $accountNumber)
     {
 
-        $result = $this->model->getProductsByModel($model);
+        $result = $this->model->getProductsByModel($model, $accountNumber);
         
         return $result;
     }

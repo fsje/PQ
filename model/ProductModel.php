@@ -106,13 +106,14 @@ class ProductModel extends model
 /**
  * GetProductsByModel
  */
-public function getProductsByModel($model)
+public function getProductsByModel($model, $accountNumber)
 {
     if(is_array($model)){
         $this->conn->where('model', $model, 'IN');
     }else{
         $this->conn->where('model', $model);
     }
+    $this->conn->where('accountNumber', $accountNumber);
     $result = $this->conn->get('pq_products');
 
     if($this->conn->count > 0){
@@ -194,7 +195,7 @@ public function getProductsByModel($model)
      {
          $ids = $this->conn->insertMulti($table, $data);
          if(!$ids){
-             echo 'insert failed: ' . $db->getLastError();
+             echo 'insert failed: ' . $this->getLastError();
          } else {
              return $ids;
          }

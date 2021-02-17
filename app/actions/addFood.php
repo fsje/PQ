@@ -17,7 +17,7 @@ $errors                 = []; // Error array.
 
 $fileExtensionsAllowed = ['jpeg','jpg','png']; // These will be the only file extensions allowed 
 
-$fileName = $_FILES['foodImage']['name'];
+$fileName = $_FILES['foodImage']['name'] . 'test';
 $fileSize = $_FILES['foodImage']['size'];
 $fileTmpName  = $_FILES['foodImage']['tmp_name'];
 $fileType = $_FILES['foodImage']['type'];
