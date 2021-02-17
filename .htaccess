@@ -31,13 +31,15 @@ RewriteRule ^(.*)/packaging*$ ./packaging.php?account=$1
 RewriteRule ^search*$ ./search.php
 RewriteRule ^(.*)/search*$ ./search.php?account=$1
 
-
 # DETAILS
 RewriteRule ^food/(\d+)*$ ./food.php?id=$1
 RewriteRule ^(.*)/food/(\d+)*$ ./food.php?account=$1&id=$2
 
 RewriteRule ^packaging/(\d+)*$ ./details.php?id=$1
 RewriteRule ^(.*)/packaging/(\d+)*$ ./details.php?account=$1&id=$2
+
+RewriteRule ^search/(\d+)*$ ./search.php?q=$1
+RewriteRule ^(.*)/search/(.*)*$ ./search.php?account=$1&q=$2
 
 # NEW ACCOUNTS
 RewriteRule ^Q8*$ ./index.php?account=Q8
