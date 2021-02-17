@@ -20,7 +20,7 @@ class model extends db
     public function __construct()
     {
    // Setup connection
-        $this->conn = new db('localhost', 'root', '', 'pq');
+        $this->conn = new db('localhost', 'root', '', 'pq2');
 
     }
     /**
