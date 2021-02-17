@@ -66,8 +66,8 @@ if(!isset($_SESSION['userid']))
                         if(isset($_GET['product'])){
                     ?>
                     <div class="form-group">
-                        <label for="inputsm">Nuværende billedesti</label>
-                        <input class="form-control" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text" required>
+                        <label for="inputsm">Nuværende billede</label>
+                        <input class="form-control-plaintext" style="color:#fff; font-weight:bold;" readonly value="<?php echo (isset($_GET['product']) ? $product['image'] : ''); ?>" name="image" id="inputsm" type="text" required>
                     </div>
                     <?php 
                         }
