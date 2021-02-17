@@ -1,11 +1,11 @@
 <?php
+session_start();
 error_reporting(0);
 header("content-type:application/json");
 require 'autoload.php';
 $products = new ProductController();
 
-$result     = $products->searchProduct($_POST['term'], 'packaging');
-#print_r($result);
+$result     = $products->searchProduct($_POST['term'], 'packaging', $_SESSION['userid']);
 
 if(isset($result) && is_array($result) || is_object($result))
 {

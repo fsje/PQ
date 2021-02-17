@@ -16,7 +16,7 @@ $uploadDirectory        = '/img/products/'; // preferede upload
 
 $errors                 = []; // Error array.
 
-$fileExtensionsAllowed = ['jpeg','jpg','png']; // These will be the only file extensions allowed 
+$fileExtensionsAllowed = ['jpeg','jpg','png', 'JPG']; // These will be the only file extensions allowed 
 
 $fileName = $_FILES['packagingImage']['name'];
 $fileSize = $_FILES['packagingImage']['size'];
@@ -24,35 +24,39 @@ $fileTmpName  = $_FILES['packagingImage']['tmp_name'];
 $fileType = $_FILES['packagingImage']['type'];
 $fileExtension = strtolower(end(explode('.',$fileName)));
 
-$uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . basename($fileName); 
-
+$uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory; 
+$newName = time() . '-' . basename($fileName);
 $didUpload = '';
 if (! in_array($fileExtension,$fileExtensionsAllowed)) {
     $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+    exit();
   }
 
   if ($fileSize > 4000000) {
     $errors[] = "File exceeds maximum size (4MB)";
+    exit();
   }
 
   if (empty($errors)) {
-    $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+    $didUpload = move_uploaded_file($fileTmpName, $uploadPath . $newName);
 
     if ($didUpload) {
       echo "The file " . basename($fileName) . " has been uploaded";
     } else {
       echo "An error occurred. Please contact the administrator.";
+      exit();
     }
   } else {
     foreach ($errors as $error) {
       echo $error . "These are the errors" . "\n";
+      exit();
     }
   }
 
   if(!$didUpload){
       $image = $_POST['image'];
   }else{
-      $image = basename($fileName);
+      $image = $newName;
   }
 
   $productId          =   $_POST['productId'];
@@ -110,9 +114,9 @@ if(count($product) > 0 && !empty($productId))
     if($_POST['type'] == 'food')
     {
         $_SESSION['msg'] = 'Fødevaren er blevet opdateret!';
-        header('location:/admin.php');
+       header('location:/admin.php');
     }else{
-        header('location:/admAddFood.php?product=' . $productId);
+       header('location:/admAddFood.php?product=' . $productId);
     }
 }
 

@@ -1,11 +1,22 @@
 <?php
+    session_start();
     error_reporting(0); // tmp fix.
     require 'app/autoload.php';
+
     $searchTerm = $_GET['q'];
+
+    if(isset($_GET['account']) && !empty($_GET['account'])){
+        $accountName = $_GET['account'];
+        $accountId = $accounts->getAccountIdByName($_GET['account']);
+   }elseif(empty($_GET['account']))
+   {
+       $accountId = 1;
+   }
+
     $products = new ProductController();
     if(isset($searchTerm))
     {
-        $product = $products->searchProduct($searchTerm, 'packaging');
+        $product = $products->searchProduct($searchTerm, 'packaging', $accountId);
     }
     $siteName = (isset($_GET['id'])) ? $searchedProduct['model'] : 'Emballage';
 
@@ -22,6 +33,7 @@
                         $bootstrapColWidth = 12 / $numOfCols;
                         foreach($product['details'] as $k => $v)
                         {
+                            if($v['accountNumber'] == $accountId){
                             $picture = $products->getProductById($v['id']);
                             if($rowCount % $numOfCols == 0) echo '<div class="row spacer">';
                                 echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">';
@@ -33,6 +45,7 @@
                                 echo '</div>';
                             $rowCount++;
                             if($rowCount % $numOfCols == 0) echo '</div>';
+                            }
                         }
                     }else{
                         echo '<div class="row" align="center">

@@ -85,24 +85,24 @@ class ProductController extends Controller
         return $result;
     }
 
-    public function searchProduct($term, $type)
+    public function searchProduct($term, $type, $account)
     {
         switch($type){
             case 'packaging':
-                $result = $this->model->getProductByTerm($term);
+                $result = $this->model->getProductByTerm($term, $account);
             break;
 
             case 'food':
-                $result = $this->model->getFoodByTerm($term);
+                $result = $this->model->getFoodByTerm($term, $account);
             break;
 
             case 'both':
-                $result = $this->model->getProductByTerm($term);
-                $result = $this->model->getFoodByTerm($term);
+                $result = $this->model->getProductByTerm($term, $account);
+                $result = $this->model->getFoodByTerm($term, $account);
             break;
 
             default:
-                $result = $this->model->getProductByTerm($term);
+                $result = $this->model->getProductByTerm($term, $account);
             break;
         }
 

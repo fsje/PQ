@@ -25,7 +25,8 @@ $fileTmpName  = $_FILES['packagingImage']['tmp_name'];
 $fileType = $_FILES['packagingImage']['type'];
 $fileExtension = strtolower(end(explode('.',$fileName)));
 
-$uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . basename($fileName); 
+$uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory; 
+$newName = time() . '-' . basename($fileName);
 
 if (! in_array($fileExtension,$fileExtensionsAllowed)) {
     $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
@@ -33,30 +34,31 @@ if (! in_array($fileExtension,$fileExtensionsAllowed)) {
 
   if ($fileSize > 4000000) {
     $errors[] = "File exceeds maximum size (4MB)";
+    exit();
   }
 
   if (empty($errors)) {
-    $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+    $didUpload = move_uploaded_file($fileTmpName, $uploadPath . $newName);
 
     if ($didUpload) {
-      echo "The file " . basename($fileName) . " has been uploaded";
+     "The file " . basename($fileName) . " has been uploaded";
     } else {
       echo "An error occurred. Please contact the administrator.";
+      exit();
     }
   } else {
     foreach ($errors as $error) {
       echo $error . "These are the errors" . "\n";
+      exit();
     }
   }
-
-
 
     // Check product information
     $productId          =   $_POST['productId'];
 if($type == 'packaging') {
     $productData = array(
         'model'         => $_POST['modelP2P'],
-        'image'         => basename($fileName),
+        'image'         => $newName,
         'ean'           => $_POST['ean'],
         'type'          => $_POST['type'],
         'accountNumber' => $_SESSION['userid'],
@@ -64,7 +66,7 @@ if($type == 'packaging') {
   }elseif($type == 'food'){
     $productData = array(
       'model'         => $_POST['modelP2P'],
-      'image'         => basename($fileName),
+      'image'         => $newName,
       'type'          => $_POST['type'],
       'accountNumber' => $_SESSION['userid'],
   );

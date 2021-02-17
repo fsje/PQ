@@ -1,0 +1,1 @@
+SELECT pq_products_details.name,pq_products_details.reitan, pq_products_details.material, pq_products.ean, pq_products.model, pq_products.accountNumber FROM pq_products JOIN pq_products_details ON pq_products.id = pq_products_details.product_id;

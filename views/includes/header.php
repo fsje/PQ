@@ -118,7 +118,7 @@
         <div class="row search">
                 <div class="col-12 col-sm-12 col-md-12" align="center">
                     <div class="container-4">
-                        <form action="https://premiumquality.dk/search.php" method="get">
+                        <form action="/search.php" method="get">
                             <input type="search" name="q" class="searchField" id="search" placeholder="Søg..." autocomplete="off" />
                             <button class="icon"><i class="fa fa-search"></i></button>
                         </form>

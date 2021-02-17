@@ -129,7 +129,7 @@ public function getProductsByModel($model, $accountNumber)
      * @param string $term search term
      * @return array
      */
-    public function getProductByTerm($term)
+    public function getProductByTerm($term, $accountNumber)
     {
         $data = array();    
         if(isset($term)){
@@ -138,6 +138,7 @@ public function getProductsByModel($model, $accountNumber)
             $this->conn->orWhere('material', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('ean', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('model', '%' . $term . '%', 'LIKE');
+            $this->conn->where('accountNumber', $accountNumber);
 
             
             $data['details'] = $this->conn->get('searchproduct');
