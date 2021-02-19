@@ -78,5 +78,5 @@ $userID          = $userController->addUserWithArray($userData, 'pq_users');
     $fp = fopen('../../.htaccess', 'a');
     fwrite($fp, $data);
 
-    header('location:../../portal.php');
+    header('location:../../portal.php?userCreated=' . $userID);
 
