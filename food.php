@@ -49,7 +49,7 @@
                     }
                     echo (isset($_GET['id'])) ? '<a href="../packaging/' . $v["parent_id"] . '">' : '<a href="' . (!empty($accountName) ? '/' . $accountName . '' : '') .  '/food/' . $v["id"] . '">';
                     echo '<div class="productBox">';
-                      echo '<img class="productImg" src="https://premiumquality.dk/img/products/' . $v["image"] . '">';
+                      echo '<img class="productImg" src="/img/products/' . $v["image"] . '">';
                     echo '</div>';
                 echo '</a>';
             echo '</div>';
@@ -66,9 +66,17 @@
             ?>
     </div>
 </div>
+<?php
+if(isset($_SESSION['userid']))
+{
+?>
 <div class="addProduct">
     <a href="/portal.php"><i class="productPlus fas fa-plus"></i></a>
 </div>
+<?php
+}
+?>
+
 <script>
 $(".deleteLink").on("click", function(e) {
     var link = this;

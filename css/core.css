@@ -1545,12 +1545,16 @@ h3.category-text:hover {
      width: 120px;
      height: 120px;
      padding-top: 25px;
+    line-height:120px;
      border-radius:120px;
  }
 
  .productPlus {
      font-size: 72px;
      color:#fff;
+     position: absolute;
+     top: 10;
+     left: 25px;
  }
 
 .relativeFoodInput {margin-top: 20px;}

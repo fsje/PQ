@@ -2,7 +2,6 @@
     session_start();
     require 'app/autoload.php';
 
-
     $products = new ProductController();
     $accounts = new AccountController();
     $users    = new UserController();
@@ -147,7 +146,16 @@
         <?php }
             } ?>
     </div>
-
+    <?php
+if(isset($_SESSION['userid']))
+{
+?>
+<div class="addProduct">
+    <a href="/portal.php"><i class="productPlus fas fa-plus"></i></a>
+</div>
+<?php
+}
+?>
 </div>
     <?php
         require_once 'views/includes/footer.php';

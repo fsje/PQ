@@ -68,9 +68,16 @@
 
     </div>
 </div>
+<?php
+if(isset($_SESSION['userid']))
+{
+?>
 <div class="addProduct">
     <a href="/portal.php"><i class="productPlus fas fa-plus"></i></a>
 </div>
+<?php
+}
+?>
 
 <script>
 $(".deleteLink").on("click", function(e) {
