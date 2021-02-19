@@ -131,16 +131,17 @@ public function getProductsByModel($model, $accountNumber)
      */
     public function getProductByTerm($term, $accountNumber)
     {
-        $data = array();    
-        if(isset($term)){
+        $data = array();
+            
+        if(isset($term) && isset($accountNumber)){
             $this->conn->where('name', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('reitan', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('material', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('ean', '%' . $term . '%', 'LIKE');
             $this->conn->orWhere('model', '%' . $term . '%', 'LIKE');
             $this->conn->where('accountNumber', $accountNumber);
-
-            
+                     
+            // Put results into our output
             $data['details'] = $this->conn->get('searchproduct');
             
         }
