@@ -48,3 +48,4 @@ RewriteRule ^INFO*$ ./index.php?account=INFO
 RewriteRule ^ANITA*$ ./index.php?account=ANITA
 RewriteRule ^CircleK*$ ./index.php?account=CircleK
 RewriteRule ^123*$ ./index.php?account=123
+RewriteRule ^thales*$ ./index.php?account=thales
