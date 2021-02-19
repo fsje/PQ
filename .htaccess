@@ -45,3 +45,4 @@ RewriteRule ^(.*)/search/(.*)*$ ./search.php?account=$1&q=$2
 RewriteRule ^Q8*$ ./index.php?account=Q8
 RewriteRule ^LAIT*$ ./index.php?account=LAIT
 RewriteRule ^INFO*$ ./index.php?account=INFO
+RewriteRule ^ANITA*$ ./index.php?account=ANITA

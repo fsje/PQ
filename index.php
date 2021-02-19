@@ -34,7 +34,6 @@
             <div class="col-md-3"></div>
            <div id="aboutUs" class="col-12 col-sm-12 col-md-6">
                     <p id="peep">
-  
                         Premium Quality™ er en serie special udviklet
                         takeaway emballage af Plant2Plast i sammarbejde
                         med Danmarks førende Retail kæder.

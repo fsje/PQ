@@ -7,9 +7,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $user = new UserController();
 
+    // Fetch informations
     $accountNumber = $_POST['accountNumber'];
     $password      = $_POST['password'];
 
+    // Checking wether account and password isset. If so, let's auth it.
     if(isset($accountNumber) && isset($password))
     {
         $user = $user->authUser($accountNumber, $password);
