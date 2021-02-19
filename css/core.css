@@ -1580,3 +1580,8 @@ h3.category-text:hover {
     height:100px;
     margin-top:200px;
   }
+
+  .ui-dialog { z-index: 1000 !important ;}
+  .ui-dialog-titlebar-close {
+    visibility: hidden;
+}
