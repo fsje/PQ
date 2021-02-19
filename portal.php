@@ -49,8 +49,23 @@ if(!isset($_SESSION['userid']))
     </div>
 </div>
 
+<?php if(isset($_GET['userCreated'])){
+?>
+<script>
+$( document ).ready(function(e) {
 
-
+    $("<div>Du har oprettet en ny bruger. Brugeren har fået tildelt et kontonummer, som de skal bruge til at logge på løsningen med. <br /><br /><b>Kontonummer: </b><?php echo $_GET['userCreated']; ?></div>").dialog({
+        buttons: {
+            "Okay": function() {
+                $(this).dialog("close");
+            },
+        },
+        title: 'Ny konto',
+        closeText: 'X',
+    });
+});
+</script>
+<?php }?>
 <div class="disp">
 	<img src="https://premiumquality.dk/img/Baner-cake-pq-dis.png" id="dispImg">
 </div>

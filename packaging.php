@@ -85,15 +85,16 @@ $(".deleteLink").on("click", function(e) {
 
     e.preventDefault();
 
-    $("<div>Du er ved at slette en vare! Er du sikker?</div>").dialog({
+    $("<div>Du er ved at <b>slette</b> en varer. <br /><br />Denne handling kan ikke gøres om!</div>").dialog({
         buttons: {
             "Ja": function() {
                 window.location = link.href;
             },
             "Nej, fortryd": function() {
                 $(this).dialog("close");
-            }
-        }
+            },
+        },
+        title: 'Slet produkt',
     });
 });
 </script>

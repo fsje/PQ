@@ -40,9 +40,12 @@
             
                   
                     if(isset($_SESSION['userid']) && $_SESSION['userid'] == $accountId){
+                        if(!isset($_GET['id'])){
                         echo '<div class="productAdmin productEdit">';
                             echo '<a href="/admFood.php?product=' . $v["id"] .'"><i class="fa fa-edit"></i></a>';
                         echo '</div>';
+                        }
+
                         echo '<div class="productAdmin productDelete">';
                         echo '<a class="deleteLink" href="/app/actions/delete.php?product=' . $v["id"] .'"><i class="fa fa-trash"></i></a>';
                         echo '</div>';
@@ -83,15 +86,16 @@ $(".deleteLink").on("click", function(e) {
 
     e.preventDefault();
 
-    $("<div>Du er ved at slette en vare! Er du sikker?</div>").dialog({
+    $("<div>Du er ved at <b>slette</b> en varer. <br /><br />Denne handling kan ikke gøres om!</div>").dialog({
         buttons: {
             "Ja": function() {
                 window.location = link.href;
             },
             "Nej, fortryd": function() {
                 $(this).dialog("close");
-            }
-        }
+            },
+        },
+        title: 'Slet produkt',
     });
 });
 </script>

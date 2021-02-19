@@ -157,6 +157,25 @@ if(isset($_SESSION['userid']))
 }
 ?>
 </div>
+<script>
+$(".deleteLink").on("click", function(e) {
+    var link = this;
+
+    e.preventDefault();
+
+    $("<div>Du er ved at <b>slette</b> en varer. <br /><br />Denne handling kan ikke gøres om!</div>").dialog({
+        buttons: {
+            "Ja": function() {
+                window.location = link.href;
+            },
+            "Nej, fortryd": function() {
+                $(this).dialog("close");
+            },
+        },
+        title: 'Slet produkt',
+    });
+});
+</script>
     <?php
         require_once 'views/includes/footer.php';
     ?>
