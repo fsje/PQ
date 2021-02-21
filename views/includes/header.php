@@ -119,7 +119,6 @@
                 <div class="col-12 col-sm-12 col-md-12" align="center">
                     <div class="container-4">
                     <?php
-                    echo $_SERVER['REQUEST_URI'];
                         if(isset($_GET['account']) && $_SERVER['REQUEST_URI'] != '/' . $_GET['account'] . '/food' && $_SERVER['REQUEST_URI'] != '/' . $_GET['account'] . '/packaging'){
                             $searchUrl = $_GET['account'] . '/';
                         }else{
