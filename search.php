@@ -3,7 +3,10 @@
     error_reporting(0); // tmp fix.
     require 'app/autoload.php';
 
-    $searchTerm = $_GET['q'];
+    $searchTerm = $_POST['q'];
+
+    $products = new ProductController();
+    $accounts = new AccountController();
 
     if(isset($_GET['account']) && !empty($_GET['account'])){
         $accountName = $_GET['account'];
@@ -12,12 +15,14 @@
    {
        $accountId = 1;
    }
+ 
 
-    $products = new ProductController();
+
     if(isset($searchTerm))
     {
         $product = $products->searchProduct($searchTerm, 'packaging', $accountId);
     }
+
     $siteName = (isset($_GET['id'])) ? $searchedProduct['model'] : 'Emballage';
 
     require_once 'views/includes/header.php';
@@ -39,7 +44,7 @@
                                 echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">';
                                     echo ($v['carton'] > 0) ? '<a href="packaging/' . $v["product_id"] . '">' : '<a href="food/' . $v["product_id"] . '">';
                                         echo '<div class="productBox">';
-                                            echo '<img class="productImg" src="img/products/' . $picture["model"] . '.png">';
+                                            echo '<img class="productImg" src="/img/products/' . $picture["model"] . '.png">';
                                         echo '</div>';
                                     echo '</a>';
                                 echo '</div>';

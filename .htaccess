@@ -38,9 +38,6 @@ RewriteRule ^(.*)/food/(\d+)*$ ./food.php?account=$1&id=$2
 RewriteRule ^packaging/(\d+)*$ ./details.php?id=$1
 RewriteRule ^(.*)/packaging/(\d+)*$ ./details.php?account=$1&id=$2
 
-RewriteRule ^search/(\d+)*$ ./search.php?q=$1
-RewriteRule ^(.*)/search/(.*)*$ ./search.php?account=$1&q=$2
-
 # NEW ACCOUNTS
 RewriteRule ^Q8*$ ./index.php?account=Q8
 RewriteRule ^LAIT*$ ./index.php?account=LAIT

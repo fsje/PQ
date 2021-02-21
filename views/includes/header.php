@@ -118,7 +118,15 @@
         <div class="row search">
                 <div class="col-12 col-sm-12 col-md-12" align="center">
                     <div class="container-4">
-                        <form action="/search.php" method="get">
+                    <?php
+                    echo $_SERVER['REQUEST_URI'];
+                        if(isset($_GET['account']) && $_SERVER['REQUEST_URI'] != '/' . $_GET['account'] . '/food' && $_SERVER['REQUEST_URI'] != '/' . $_GET['account'] . '/packaging'){
+                            $searchUrl = $_GET['account'] . '/';
+                        }else{
+                            $searchUrl = '';
+                        }
+                    ?>
+                        <form action="<?php echo $searchUrl; ?>search" method="post">
                             <input type="search" name="q" class="searchField" id="search" placeholder="Søg..." autocomplete="off" />
                             <button class="icon"><i class="fa fa-search"></i></button>
                         </form>
